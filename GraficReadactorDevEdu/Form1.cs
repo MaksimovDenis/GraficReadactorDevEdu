@@ -20,7 +20,7 @@ namespace GraficReadactorDevEdu
         bool MD = false;
         Point prevPoint;
         IFigure currentFigure;
-
+        string name = "";
 
         public Form1()
         {
@@ -37,10 +37,56 @@ namespace GraficReadactorDevEdu
         {
             if (MD)
             {
-
                 tmpBm = (Bitmap)mainBm.Clone();
                 grafics = Graphics.FromImage(tmpBm);
-                grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
+                if (name == "Прямоугольник")
+                {
+                    grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
+                }
+                if(name == "Круг")
+                {
+                    Point[] points=currentFigure.GetPoints(prevPoint, e.Location);
+                    grafics.DrawEllipse(pen,points[0].X, points[0].Y, points[1].X - points[0].X, points[1].X- points[0].X);//Должно все меняться кроме центра
+                }
+                //if (name == "Кисть")
+                //{
+                   
+                //    grafics.DrawLine(pen, prevPoint, e.Location);
+                //   pictureBox1.Image= tmpBm;
+                //    prevPoint = e.Location;
+                   
+                //}
+                if (name == "Эллипс")
+                {
+                    Point[] points = currentFigure.GetPoints(prevPoint, e.Location);
+                    grafics.DrawEllipse(pen, points[0].X, points[0].Y, points[1].X - points[0].X, points[1].Y - points[0].Y);
+                }
+                if (name == "Квадрат")
+                {
+                    grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
+                }
+                
+                if (name == "Линия")
+                {
+                    grafics.DrawLine(pen, prevPoint, e.Location);
+                }
+                if (name == "Ломанная линия")
+                {
+                   
+                    
+                        grafics.DrawLine(pen, prevPoint, e.Location);
+                    prevPoint = e.Location;
+
+
+                }
+                if (name == "Равнобедренный треугольник")
+                {
+                    grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
+                }
+                if (name == "Прямоугольный треугольник")
+                {
+                    grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
+                }
                 pictureBox1.Image = tmpBm;
                 GC.Collect();
 
@@ -55,6 +101,7 @@ namespace GraficReadactorDevEdu
 
         private void button1_Click(object sender, EventArgs e)
         {
+            name = "Прямоугольник";
             currentFigure = new RectangleFigure();
         }
 
@@ -65,5 +112,56 @@ namespace GraficReadactorDevEdu
             prevPoint = new Point(0, 0);
             MD = false;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            name = "Линия";
+            currentFigure = new Line();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            name = "Квадрат";
+            currentFigure = new Square();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            name = "Круг";
+            currentFigure = new Circle();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            name = "Эллипс";
+            currentFigure = new Circle();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            name = "Равнобедренный треугольник";
+            currentFigure = new Triangle();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            name = "Прямоугольный треугольник";
+            currentFigure = new PTriangle();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            name = "Кисть";
+           
+        }
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            name = "Ломанная линия";
+            currentFigure = new Line();
+        }
+
+       
+
     }
 }
