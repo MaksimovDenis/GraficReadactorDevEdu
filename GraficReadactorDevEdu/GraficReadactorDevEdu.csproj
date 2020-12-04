@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Figure\BrokenLines.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\IFigure.cs" />
     <Compile Include="Figure\Line.cs" />

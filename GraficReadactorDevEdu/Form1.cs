@@ -21,7 +21,10 @@ namespace GraficReadactorDevEdu
         Point prevPoint;
         IFigure currentFigure;
         string name = "";
-        int tmp = 0;
+        int quantity=0;
+        Point endPoint;
+        int tmp=0;
+        int crnt = 0;
         public Form1()
         {
             InitializeComponent();
@@ -30,15 +33,56 @@ namespace GraficReadactorDevEdu
         private void pictureBox1_MouseDown_1(object sender, MouseEventArgs e)
         {
             MD = true;
-            prevPoint = e.Location;
+            
+            if (name == "Ломанная линия" && tmp < quantity && tmp != 0)
+            {
+                prevPoint = endPoint;
+                
+            }
+            
+            if (tmp >= quantity-1)
+            {
+                crnt = 0;
+                tmp = 0;
+            }
+            else
+            {
+                crnt++;
+                tmp++;
+            }
+            
+
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            MD = false;
+            mainBm = tmpBm;
+           
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+           
             if (MD)
             {
                 tmpBm = (Bitmap)mainBm.Clone();
                 grafics = Graphics.FromImage(tmpBm);
+                if (name == "Ломанная линия")
+                {
+                    
+                    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
+                    
+                    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
+                    
+                   
+                }
+                
+                if (name == "Линия")
+                {
+                    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
+                    
+                }
                 if (name == "Прямоугольник")
                 {
                     grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
@@ -66,17 +110,6 @@ namespace GraficReadactorDevEdu
                     grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
                 }
                 
-                if (name == "Линия")
-                {
-                    grafics.DrawLine(pen, prevPoint, e.Location);
-                }
-                if (name == "Ломанная линия")
-                {
-                    grafics.DrawLine(pen, prevPoint, e.Location);
-                    prevPoint = e.Location;
-
-
-                }
                 if (name == "Равнобедренный треугольник")
                 {
                     grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
@@ -89,15 +122,13 @@ namespace GraficReadactorDevEdu
                 GC.Collect();
 
             }
+            else
+            {
+                prevPoint = e.Location;
+            }
            
         }
         
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-            MD = false;
-            mainBm = tmpBm;
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             name = "Прямоугольник";
@@ -158,9 +189,12 @@ namespace GraficReadactorDevEdu
         {
             name = "Ломанная линия";
             currentFigure = new Line();
+            tmp = 0; 
         }
 
-       
-
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            quantity = (int)numericUpDown2.Value;
+        }
     }
 }

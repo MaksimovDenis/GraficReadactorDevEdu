@@ -38,7 +38,11 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -75,7 +79,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(7, 85);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(789, 366);
+            this.pictureBox1.Size = new System.Drawing.Size(1056, 524);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown_1);
@@ -94,7 +98,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(340, 21);
+            this.button6.Location = new System.Drawing.Point(281, 21);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(53, 53);
             this.button6.TabIndex = 6;
@@ -104,7 +108,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(399, 21);
+            this.button7.Location = new System.Drawing.Point(340, 21);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(53, 53);
             this.button7.TabIndex = 7;
@@ -114,7 +118,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(458, 21);
+            this.button8.Location = new System.Drawing.Point(399, 21);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(53, 53);
             this.button8.TabIndex = 8;
@@ -124,7 +128,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(517, 21);
+            this.button9.Location = new System.Drawing.Point(458, 21);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(53, 53);
             this.button9.TabIndex = 9;
@@ -134,7 +138,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(281, 21);
+            this.button5.Location = new System.Drawing.Point(517, 21);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(53, 53);
             this.button5.TabIndex = 10;
@@ -142,11 +146,43 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(807, 28);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 11;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(576, 21);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown2.TabIndex = 12;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1075, 621);
+            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -161,6 +197,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,6 +215,8 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
     }
 }
 
