@@ -21,7 +21,7 @@ namespace GraficReadactorDevEdu
         Point prevPoint;
         IFigure currentFigure;
         string name = "";
-
+        int tmp = 0;
         public Form1()
         {
             InitializeComponent();
@@ -48,14 +48,14 @@ namespace GraficReadactorDevEdu
                     Point[] points=currentFigure.GetPoints(prevPoint, e.Location);
                     grafics.DrawEllipse(pen,points[0].X, points[0].Y, points[1].X - points[0].X, points[1].X- points[0].X);//Должно все меняться кроме центра
                 }
-                //if (name == "Кисть")
-                //{
-                   
-                //    grafics.DrawLine(pen, prevPoint, e.Location);
-                //   pictureBox1.Image= tmpBm;
-                //    prevPoint = e.Location;
-                   
-                //}
+                if (name == "Кисть")
+                {
+
+                    grafics = Graphics.FromImage(mainBm);
+                    grafics.DrawLine(pen, prevPoint, e.Location);
+                    prevPoint = e.Location;
+
+                }
                 if (name == "Эллипс")
                 {
                     Point[] points = currentFigure.GetPoints(prevPoint, e.Location);
@@ -72,9 +72,7 @@ namespace GraficReadactorDevEdu
                 }
                 if (name == "Ломанная линия")
                 {
-                   
-                    
-                        grafics.DrawLine(pen, prevPoint, e.Location);
+                    grafics.DrawLine(pen, prevPoint, e.Location);
                     prevPoint = e.Location;
 
 
@@ -91,8 +89,16 @@ namespace GraficReadactorDevEdu
                 GC.Collect();
 
             }
+            else
+            {
+                //tmpBm = (Bitmap)mainBm.Clone();
+                grafics = Graphics.FromImage(mainBm);
+                grafics.DrawLine(pen, prevPoint, e.Location);
+                prevPoint = e.Location;
+               
+            }
         }
-
+        
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             MD = false;
