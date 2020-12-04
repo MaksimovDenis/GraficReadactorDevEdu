@@ -89,14 +89,7 @@ namespace GraficReadactorDevEdu
                 GC.Collect();
 
             }
-            else
-            {
-                //tmpBm = (Bitmap)mainBm.Clone();
-                grafics = Graphics.FromImage(mainBm);
-                grafics.DrawLine(pen, prevPoint, e.Location);
-                prevPoint = e.Location;
-               
-            }
+           
         }
         
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
