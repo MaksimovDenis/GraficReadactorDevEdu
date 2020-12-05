@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -40,6 +42,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -47,39 +50,46 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(42, 21);
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(12, 195);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(53, 53);
+            this.button1.Size = new System.Drawing.Size(70, 70);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Прямоугольник";
+            this.toolTip1.SetToolTip(this.button1, "Прямоугольник");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(101, 21);
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(12, 119);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(53, 53);
+            this.button2.Size = new System.Drawing.Size(70, 70);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Линия";
+            this.toolTip1.SetToolTip(this.button2, "Линия");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(160, 21);
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Location = new System.Drawing.Point(88, 195);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(53, 53);
+            this.button3.Size = new System.Drawing.Size(70, 70);
             this.button3.TabIndex = 2;
-            this.button3.Text = "Квадрат";
+            this.toolTip1.SetToolTip(this.button3, "Квадрат");
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(7, 85);
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Location = new System.Drawing.Point(164, 43);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1056, 524);
+            this.pictureBox1.Size = new System.Drawing.Size(1026, 594);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown_1);
@@ -88,49 +98,59 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(219, 21);
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.Location = new System.Drawing.Point(12, 271);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(56, 53);
+            this.button4.Size = new System.Drawing.Size(70, 70);
             this.button4.TabIndex = 4;
-            this.button4.Text = "Круг";
+            this.toolTip1.SetToolTip(this.button4, "Круг");
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(281, 21);
+            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.Location = new System.Drawing.Point(12, 347);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(53, 53);
+            this.button6.Size = new System.Drawing.Size(70, 70);
             this.button6.TabIndex = 6;
-            this.button6.Text = "Равнобедренный треугольник";
+            this.button6.Text = "\r\n";
+            this.toolTip1.SetToolTip(this.button6, "Равнобедренный треугольник");
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(340, 21);
+            this.button7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.Location = new System.Drawing.Point(88, 347);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(53, 53);
+            this.button7.Size = new System.Drawing.Size(70, 70);
             this.button7.TabIndex = 7;
-            this.button7.Text = "Прямоугольный";
+            this.toolTip1.SetToolTip(this.button7, "Прямоугольный треугольник");
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(399, 21);
+            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.Location = new System.Drawing.Point(88, 271);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(53, 53);
+            this.button8.Size = new System.Drawing.Size(70, 70);
             this.button8.TabIndex = 8;
-            this.button8.Text = "Эллипс";
+            this.toolTip1.SetToolTip(this.button8, "Элипс");
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(458, 21);
+            this.button9.Location = new System.Drawing.Point(12, 43);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(53, 53);
+            this.button9.Size = new System.Drawing.Size(70, 70);
             this.button9.TabIndex = 9;
             this.button9.Text = "Кисть";
             this.button9.UseVisualStyleBackColor = true;
@@ -138,24 +158,26 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(517, 21);
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.Location = new System.Drawing.Point(88, 119);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(53, 53);
+            this.button5.Size = new System.Drawing.Size(70, 70);
             this.button5.TabIndex = 10;
-            this.button5.Text = "Ломанная линия";
+            this.toolTip1.SetToolTip(this.button5, "Ломанная линия");
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(807, 28);
+            this.numericUpDown1.Location = new System.Drawing.Point(290, 12);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 11;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(576, 21);
+            this.numericUpDown2.Location = new System.Drawing.Point(164, 12);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -180,7 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1075, 621);
+            this.ClientSize = new System.Drawing.Size(1193, 649);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button5);
@@ -217,6 +239,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
