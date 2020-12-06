@@ -21,10 +21,12 @@ namespace GraficReadactorDevEdu
         Point prevPoint;
         IFigure currentFigure;
         string name = "";
-        int quantity=0;
+        int quantity = 0;
         Point endPoint;
-        int tmp=0;
-        int crnt = 0;
+        int tmp = 0;
+        Point begin;
+        int quantity2 = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -33,32 +35,89 @@ namespace GraficReadactorDevEdu
         private void pictureBox1_MouseDown_1(object sender, MouseEventArgs e)
         {
             MD = true;
-            
+
             if (name == "Ломанная линия" && tmp < quantity && tmp != 0)
             {
-                prevPoint = endPoint;
-                
-            }
-            
-            if (tmp >= quantity-1)
-            {
-                crnt = 0;
-                tmp = 0;
-            }
-            else
-            {
-                crnt++;
-                tmp++;
-            }
-            
+                if (tmp < quantity && tmp != 0)
+                {
+                    prevPoint = endPoint;
 
+                }
+
+                if (tmp == quantity - 1)
+                {
+
+                    tmp = 0;
+                }
+                else
+                {
+
+                    tmp++;
+                }
+            }
+
+            if (name == "Треугольник по трем точкам")
+            {
+
+                if (tmp == 0)
+                {
+                    begin = e.Location;
+                }
+                if (tmp < 2 && tmp != 0)
+                {
+                    prevPoint = endPoint;
+
+                }
+
+
+                if (tmp == 1)
+                {
+
+                    tmp = 0;
+                }
+                else
+                {
+
+                    tmp++;
+                }
+            }
+
+            if (name == "Многоугольник")
+            {
+                if (tmp == 0)
+                {
+                    begin = e.Location;
+                }
+                if (tmp < quantity2 && tmp != 0)
+                {
+                    prevPoint = endPoint;
+
+                }
+
+                if (tmp == quantity2 - 1)
+                {
+
+                    tmp = 0;
+                }
+                else
+                {
+
+                    tmp++;
+                }
+            }
         }
+
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             MD = false;
             mainBm = tmpBm;
-           
+            if (name == "Треугольник по трем точкам" || (name == "Многоугольник" && tmp == 0))
+            {
+                grafics.DrawLine(pen, begin, e.Location);//
+
+            }
+
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -74,10 +133,24 @@ namespace GraficReadactorDevEdu
                     grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
                     
                     endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
-                    
-                   
                 }
-                
+
+                if (name == "Треугольник по трем точкам")
+                {
+
+                    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
+
+                    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
+                }
+
+                if (name == "Многоугольник")
+                {
+
+                    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
+
+                    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
+                }
+
                 if (name == "Линия")
                 {
                     grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
@@ -195,6 +268,26 @@ namespace GraficReadactorDevEdu
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             quantity = (int)numericUpDown2.Value;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            name = "Треугольник по трем точкам";
+
+            currentFigure = new Line();
+            tmp = 0;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            name = "Многоугольник";
+            currentFigure = new Line();
+            tmp = 0;
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            quantity2 = (int)numericUpDown1.Value;
         }
     }
 }
