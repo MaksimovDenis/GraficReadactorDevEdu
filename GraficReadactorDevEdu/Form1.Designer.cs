@@ -40,6 +40,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -77,7 +79,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(7, 85);
+            this.pictureBox1.Location = new System.Drawing.Point(7, 80);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1056, 524);
             this.pictureBox1.TabIndex = 3;
@@ -148,10 +150,11 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(807, 28);
+            this.numericUpDown1.Location = new System.Drawing.Point(943, 21);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 11;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // numericUpDown2
             // 
@@ -176,11 +179,33 @@
             0});
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(702, 21);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(112, 53);
+            this.button10.TabIndex = 13;
+            this.button10.Text = "Треугольник по трем точкам";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(820, 21);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(112, 53);
+            this.button11.TabIndex = 14;
+            this.button11.Text = "Многоугольник";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1075, 621);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button5);
@@ -217,6 +242,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
 
