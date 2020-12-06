@@ -25,9 +25,28 @@ namespace GraficReadactorDevEdu
         Point endPoint;
         int tmp=0;
         int crnt = 0;
+        int n;//количество сторон
+        int R;//расстояние от центра до стороны
+        Point Cntr;//центр
+        Point[] p; //массив точек будущего многоугольника
         public Form1()
         {
             InitializeComponent();
+        }
+                    
+
+       
+        private void LineAngle(double angle)
+        {
+            double z = 0; int i = 0;
+            while (i < n + 1)
+            {
+
+                p[i].X = Cntr.X + (int)(Math.Round(Math.Cos(z / 180 * Math.PI) * R));
+                p[i].Y = Cntr.Y - (int)(Math.Round(Math.Sin(z / 180 * Math.PI) * R));
+                z = z + angle;
+                i++;
+            }
         }
 
         private void pictureBox1_MouseDown_1(object sender, MouseEventArgs e)
@@ -118,6 +137,13 @@ namespace GraficReadactorDevEdu
                 {
                     grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
                 }
+
+                if (name == "Правильный многоугольник")
+                {
+                    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
+
+                    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
+                }
                 pictureBox1.Image = tmpBm;
                 GC.Collect();
 
@@ -196,5 +222,60 @@ namespace GraficReadactorDevEdu
         {
             quantity = (int)numericUpDown2.Value;
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            name = "Правильный многоугольник";
+            currentFigure = new RegularPolygon();
+            tmp = 0;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {        
+             label10.Text = "";
+             //получаем входные данные и проверяем их на корректность
+             n = Convert.ToInt32(textBox4.Text);
+             R = Convert.ToInt32(textBox5.Text);
+             Cntr.X = Convert.ToInt32(textBox6.Text);
+             Cntr.Y = Convert.ToInt32(textBox7.Text);
+             if (n < 0 || R < 0)
+                 label10.Text = "Неверные входные данные!";
+             else //входные данные корректны, рисуем многоуголник
+             {
+                 p = new Point[n + 1];
+                 LineAngle((double)(360.0 / (double)n));
+                 int i = n;
+                 Graphics g = pictureBox1.CreateGraphics();
+                 while (i > 0)
+                 {
+                     g.DrawLine(new Pen(Color.Black, 2), p[i], p[i - 1]);
+                     i = i - 1;
+                 }
+             }
+        }
+
+
+         //оставляем нарисованный многоугольник, обнуляем входные значения для нового ввода
+         private void button13_Click_1(object sender, EventArgs e)
+         {
+             textBox4.Text = "0";
+             textBox5.Text = "0";
+             textBox6.Text = "0";
+             textBox7.Text = "0";
+             label10.Text = "";
+
+         }
+         //стираем всё нарисованное, не обнуляя последние входные данные
+         private void button12_Click(object sender, EventArgs e)
+         {
+             pictureBox1.Image = null;
+             label10.Text = "";
+         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+
+
