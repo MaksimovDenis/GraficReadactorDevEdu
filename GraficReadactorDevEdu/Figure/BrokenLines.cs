@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-    class BrokenLines : IFigure
+   public class BrokenLines : IFigure
     {
 
         public Point[] GetPoints(Point startPoint, Point endPoint)

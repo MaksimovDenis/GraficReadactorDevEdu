@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-    class Circle : IFigure
+    public class Circle : IFigure
     {
         public Point[] GetPoints(Point startPoint, Point endPoint)
         {
