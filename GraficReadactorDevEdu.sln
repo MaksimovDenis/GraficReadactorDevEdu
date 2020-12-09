@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraficReadactorDevEdu", "GraficReadactorDevEdu\GraficReadactorDevEdu.csproj", "{5D609155-26CC-4F72-93F6-50C81C1710AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraficReadactorDevEdu.Tests", "GraficReadactorDevEdu.Tests\GraficReadactorDevEdu.Tests.csproj", "{1F89FE73-0681-425B-92EE-7781278B734C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraficReadactorDevEdu.Tests", "GraficReadactorDevEdu.Tests\GraficReadactorDevEdu.Tests.csproj", "{1F89FE73-0681-425B-92EE-7781278B734C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

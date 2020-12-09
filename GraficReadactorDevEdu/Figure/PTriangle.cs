@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-    class PTriangle : IFigure//Прямоугольный треугольник
+    public class PTriangle : IFigure//Прямоугольный треугольник
     {
+        public void Draw(Graphics graphics, Pen pen, Point[] pts)
+        {
+            graphics.DrawPolygon(pen, pts);
+        }
+
         public Point[] GetPoints(Point startPoint, Point endPoint)
         {
            

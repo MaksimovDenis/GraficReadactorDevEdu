@@ -9,6 +9,11 @@ namespace GraficReadactorDevEdu.Figure
 {
     class RectangleFigure : IFigure
     {
+        public void Draw(Graphics graphics, Pen pen, Point[] pts)
+        {
+            graphics.DrawPolygon(pen, pts);
+        }
+
         public Point[] GetPoints(Point startPoint, Point endPoint)
         {
             return new Point[]

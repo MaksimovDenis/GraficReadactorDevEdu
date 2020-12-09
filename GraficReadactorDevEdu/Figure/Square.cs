@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-    class Square : IFigure
+    public class Square : IFigure
     {
+        public void Draw(Graphics graphics, Pen pen, Point[] pts)
+        {
+            graphics.DrawPolygon(pen,pts);
+        }
+
         public Point[] GetPoints(Point startPoint, Point endPoint)
         {
             return new Point[]
