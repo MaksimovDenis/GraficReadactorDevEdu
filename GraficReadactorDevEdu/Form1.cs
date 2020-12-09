@@ -332,5 +332,12 @@ namespace GraficReadactorDevEdu
         {
             pen.Width = (int)numericUpDown3.Value;
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Image = mainBm;
+            
+        }
     }
 }
