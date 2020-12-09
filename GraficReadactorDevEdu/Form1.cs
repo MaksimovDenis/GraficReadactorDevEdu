@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GraficReadactorDevEdu.Figure;
 
+
 namespace GraficReadactorDevEdu
 {
     public partial class Form1 : Form
@@ -211,7 +212,8 @@ namespace GraficReadactorDevEdu
         private void Form1_Load(object sender, EventArgs e)
         {
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            pen = new Pen(Color.Black, 1);
+            
+            pen = new Pen(colorDialog1.Color, (int)numericUpDown3.Value);
             prevPoint = new Point(0, 0);
             MD = false;
         }
@@ -282,12 +284,29 @@ namespace GraficReadactorDevEdu
         {
             name = "Многоугольник";
             currentFigure = new Line();
+            quantity2 = (int)numericUpDown1.Value;
             tmp = 0;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             quantity2 = (int)numericUpDown1.Value;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+
+            if (MyDialog.ShowDialog()==DialogResult.OK)
+            {
+                pen.Color = MyDialog.Color;
+            }
+            
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            pen.Width = (int)numericUpDown3.Value;
         }
     }
 }
