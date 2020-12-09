@@ -48,6 +48,8 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button12 = new System.Windows.Forms.Button();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -232,28 +234,54 @@
             // 
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button12.Location = new System.Drawing.Point(416, 38);
+            this.button12.Location = new System.Drawing.Point(416, 40);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(115, 25);
+            this.button12.Size = new System.Drawing.Size(120, 27);
             this.button12.TabIndex = 15;
             this.button12.Text = "Цвет";
+            this.toolTip1.SetToolTip(this.button12, "Цвет фигуры");
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // numericUpDown3
             // 
             this.numericUpDown3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown3.Location = new System.Drawing.Point(537, 38);
+            this.numericUpDown3.Location = new System.Drawing.Point(542, 40);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(120, 27);
             this.numericUpDown3.TabIndex = 16;
+            this.toolTip1.SetToolTip(this.numericUpDown3, "Толщина линии");
             this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(538, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 19);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Толщина линии";
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button13.Location = new System.Drawing.Point(1061, 40);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(120, 27);
+            this.button13.TabIndex = 18;
+            this.button13.Text = "Очистить поле";
+            this.toolTip1.SetToolTip(this.button13, "Очистить поле");
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 608);
+            this.Controls.Add(this.button13);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
@@ -278,6 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -301,6 +330,8 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button13;
     }
 }
 
