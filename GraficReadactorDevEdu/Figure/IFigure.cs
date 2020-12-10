@@ -13,5 +13,6 @@ namespace GraficReadactorDevEdu.Figure
         Point[] GetPoints(Point startPoint, Point endPoint);
 
         void Draw(Graphics graphics, Pen pen, Point[] pts);
+       
     }
 }

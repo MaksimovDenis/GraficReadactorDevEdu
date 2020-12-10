@@ -36,9 +36,10 @@ namespace GraficReadactorDevEdu
         private void pictureBox1_MouseDown_1(object sender, MouseEventArgs e)
         {
             MD = true;
-
-            if (name == "Ломанная линия" && tmp < quantity && tmp != 0)
+            
+            if (name == "Ломанная линия" )
             {
+                
                 if (tmp < quantity && tmp != 0)
                 {
                     prevPoint = endPoint;
@@ -56,6 +57,7 @@ namespace GraficReadactorDevEdu
                     tmp++;
                 }
             }
+            
 
             if (name == "Треугольник по трем точкам")
             {
@@ -89,13 +91,13 @@ namespace GraficReadactorDevEdu
                 {
                     begin = e.Location;
                 }
-                if (tmp < quantity2 && tmp != 0)
+                if (tmp < quantity2-1 && tmp != 0)
                 {
                     prevPoint = endPoint;
 
                 }
 
-                if (tmp == quantity2 - 1)
+                if (tmp == quantity2 - 2)
                 {
 
                     tmp = 0;
@@ -106,6 +108,7 @@ namespace GraficReadactorDevEdu
                     tmp++;
                 }
             }
+            
         }
 
 
@@ -144,81 +147,9 @@ namespace GraficReadactorDevEdu
                     var points = currentFigure.GetPoints(prevPoint, e.Location);
                     currentFigure.Draw(grafics, pen, points);
 
-
-                    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
+                    endPoint = e.Location;//нужно для ломанных линий
                 }
 
-
-                //if (name == "Кисть")
-                //{
-
-                //    grafics = Graphics.FromImage(mainBm);
-                //    grafics.DrawLine(pen, prevPoint, e.Location);
-                //    prevPoint = e.Location;
-
-                //}
-
-
-
-
-
-                //if (name == "Ломанная линия")
-                //{
-
-                //    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
-
-                //    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
-                //}
-
-                //if (name == "Треугольник по трем точкам")
-                //{
-
-                //    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
-
-                //    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
-                //}
-
-                //if (name == "Многоугольник")
-                //{
-
-                //    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
-
-                //    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
-                //}
-
-                //if (name == "Линия")
-                //{
-                //    grafics.DrawLine(pen, currentFigure.GetPoints(prevPoint, e.Location)[0], currentFigure.GetPoints(prevPoint, e.Location)[1]);
-
-                //}
-                //if (name == "Прямоугольник")
-                //{
-                //    grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
-                //}
-                //if(name == "Круг")
-                //{
-                //    Point[] poin                ts=currentFigure.GetPoints(prevPoint, e.Location);
-                //    grafics.DrawEllipse(pen,points[0].X, points[0].Y, points[1].X - points[0].X, points[1].X- points[0].X);//Должно все меняться кроме центра
-                //}
-
-                //if (name == "Эллипс")
-                //{
-                //    Point[] points = currentFigure.GetPoints(prevPoint, e.Location);
-                //    grafics.DrawEllipse(pen, points[0].X, points[0].Y, points[1].X - points[0].X, points[1].Y - points[0].Y);
-                //}
-                //if (name == "Квадрат")
-                //{
-                //    grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
-                //}
-
-                //if (name == "Равнобедренный треугольник")
-                //{
-                //    grafics.DrawPolygon(pen, currentFigure.GetPoints(prevPoint, e.Location));
-                //}
-                //if (name == "Прямоугольный треугольник")
-                //{
-                //    
-                //}
                 pictureBox1.Image = tmpBm;
                 GC.Collect();
 
@@ -290,7 +221,7 @@ namespace GraficReadactorDevEdu
         private void button5_Click_1(object sender, EventArgs e)
         {
             name = "Ломанная линия";
-            currentFigure = new Line();
+            currentFigure = new BrokenLines();
             tmp = 0; 
         }
 
