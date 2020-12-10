@@ -7,22 +7,24 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-   public class BrokenLines : IFigure
+    public class Ellipse : IFigure
     {
         public void Draw(Graphics graphics, Pen pen, Point[] pts)
         {
-            graphics.DrawLine(pen, pts[0], pts[1]);
-            
+            graphics.DrawEllipse(pen,
+                pts[0].X,
+                pts[0].Y,
+                pts[1].X - pts[0].X,
+                pts[1].Y - pts[0].Y);
         }
 
         public Point[] GetPoints(Point startPoint, Point endPoint)
         {
-           
             return new Point[]
             {
                startPoint,
                endPoint
-
+              
             };
         }
     }

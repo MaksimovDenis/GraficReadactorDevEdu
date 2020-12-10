@@ -15,9 +15,9 @@ namespace GraficReadactorDevEdu.Figure
                 pts[0].X,
                 pts[0].Y,
                 pts[1].X - pts[0].X,
-                pts[1].Y - pts[0].Y);
+                 pts[1].X - pts[0].X);
         }
-
+       
         public Point[] GetPoints(Point startPoint, Point endPoint)
         {
             return new Point[]
@@ -28,4 +28,3 @@ namespace GraficReadactorDevEdu.Figure
         }
     }
 }
-

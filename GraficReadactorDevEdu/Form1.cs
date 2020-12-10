@@ -143,6 +143,9 @@ namespace GraficReadactorDevEdu
                     grafics = Graphics.FromImage(tmpBm);
                     var points = currentFigure.GetPoints(prevPoint, e.Location);
                     currentFigure.Draw(grafics, pen, points);
+
+
+                    endPoint = currentFigure.GetPoints(prevPoint, e.Location)[1];
                 }
 
 
@@ -264,7 +267,7 @@ namespace GraficReadactorDevEdu
         private void button8_Click(object sender, EventArgs e)
         {
             name = "Эллипс";
-            currentFigure = new Circle();
+            currentFigure = new Ellipse();
         }
 
         private void button6_Click(object sender, EventArgs e)
