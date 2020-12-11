@@ -27,24 +27,6 @@ namespace GraficReadactorDevEdu.Figure
             };
         }
         
-        //public void BrokeLinesFunc(Point prevPoint, Point endPoint,int tmp,int quantity)
-        //{
-
-        //    if (tmp < quantity && tmp != 0)
-        //    {
-        //        prevPoint = endPoint;
-
-        //    }
-
-        //    if (tmp == quantity - 1)
-        //    {
-        //        tmp = 0;
-        //    }
-        //    else
-        //    {
-
-        //        tmp++;
-        //    }
-        //}
+       
     }
 }

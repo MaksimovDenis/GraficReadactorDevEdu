@@ -115,13 +115,14 @@ namespace GraficReadactorDevEdu
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             MD = false;
-            mainBm = tmpBm;
+          
             if (name == "Треугольник по трем точкам" || (name == "Многоугольник" && tmp == 0))
             {
                 grafics.DrawLine(pen, begin, e.Location);//
 
             }
-
+            mainBm = tmpBm;
+            pictureBox1.Image = tmpBm;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
