@@ -9,6 +9,9 @@ namespace GraficReadactorDevEdu.Figure
 {
     public class Circle : IFigure
     {
+        public List<Point> Points { get; set; }
+        public Color color { get; set; }
+        public int width { get; set; }
         public void Draw(Graphics graphics, Pen pen, Point[] pts)
         {
             graphics.DrawEllipse(pen,
@@ -18,13 +21,21 @@ namespace GraficReadactorDevEdu.Figure
                  pts[1].X - pts[0].X);
         }
        
-        public Point[] GetPoints(Point startPoint, Point endPoint)
+        public void Update(Point startPoint, Point endPoint)
         {
-            return new Point[]
+            Points = new List<Point>
             {
                startPoint,
                endPoint
             };
+        }
+        public bool Check()
+        {
+            if (Points == null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

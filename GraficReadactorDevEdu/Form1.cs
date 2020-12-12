@@ -27,7 +27,7 @@ namespace GraficReadactorDevEdu
         int tmp = 0;
         Point begin;
         int quantity2 = 0;
-
+        List<IFigure> Figures;
         public Form1()
         {
             InitializeComponent();
@@ -116,19 +116,26 @@ namespace GraficReadactorDevEdu
         {
             MD = false;
             mainBm = tmpBm;
-          
             if (name == "Треугольник по трем точкам" || (name == "Многоугольник" && tmp == 0))
             {
                 grafics.DrawLine(pen, begin, e.Location);//
 
+            }
+
+            if (currentFigure.Check())
+            {
+                Figures.Add(currentFigure);
+            }
+            else
+            {
+                return;
             }
             pictureBox1.Image = tmpBm;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (currentFigure == null)
-                return;
+            
             if (MD)
             {
                 tmpBm = (Bitmap)mainBm.Clone();
@@ -145,8 +152,9 @@ namespace GraficReadactorDevEdu
                 else
                 {
                     grafics = Graphics.FromImage(tmpBm);
-                    var points = currentFigure.GetPoints(prevPoint, e.Location);
-                    currentFigure.Draw(grafics, pen, points);
+                   
+                    currentFigure.Update(prevPoint, e.Location);
+                    currentFigure.Draw(grafics, pen, currentFigure.Points.ToArray());
 
                     endPoint = e.Location;//нужно для ломанных линий
                 }
@@ -175,55 +183,62 @@ namespace GraficReadactorDevEdu
             pen = new Pen(colorDialog1.Color, (int)numericUpDown3.Value);
             prevPoint = new Point(0, 0);
             MD = false;
+            Figures = new List<IFigure>();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             name = "Линия";
             currentFigure = new Line();
-
+            Figures = new List<IFigure>();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             name = "Квадрат";
             currentFigure = new Square();
+            Figures = new List<IFigure>();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             name = "Круг";
             currentFigure = new Circle();
+            Figures = new List<IFigure>();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             name = "Эллипс";
             currentFigure = new Ellipse();
+            Figures = new List<IFigure>();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             name = "Равнобедренный треугольник";
             currentFigure = new Triangle();
+            Figures = new List<IFigure>();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             name = "Прямоугольный треугольник";
             currentFigure = new PTriangle();
+            Figures = new List<IFigure>();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             name = "Кисть";
-           
+            Figures = new List<IFigure>();
         }
         private void button5_Click_1(object sender, EventArgs e)
         {
             name = "Ломанная линия";
             currentFigure = new BrokenLines();
             tmp = 0; 
+
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)

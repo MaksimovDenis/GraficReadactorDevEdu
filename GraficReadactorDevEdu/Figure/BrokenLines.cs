@@ -9,6 +9,9 @@ namespace GraficReadactorDevEdu.Figure
 {
    public class BrokenLines : IFigure
     {
+        public List<Point> Points { get; set; }
+        public Color color { get; set; }
+        public int width { get; set; }
         public Point tmpPoint;
         public void Draw(Graphics graphics, Pen pen, Point[] pts)
         {
@@ -16,17 +19,24 @@ namespace GraficReadactorDevEdu.Figure
             
         }
 
-        public Point[] GetPoints(Point startPoint, Point endPoint)
+        public void Update(Point startPoint, Point endPoint)
         {
-           
-            return new Point[]
+
+            Points = new List<Point>
             {
                startPoint,
                endPoint
 
             };
         }
-        
-       
+        public bool Check()
+        {
+            if (Points == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 }

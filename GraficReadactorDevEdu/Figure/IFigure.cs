@@ -10,8 +10,11 @@ namespace GraficReadactorDevEdu.Figure
 {
     public interface IFigure
     {
-        Point[] GetPoints(Point startPoint, Point endPoint);
-
+        List<Point> Points { get; set; }
+        Color color { get; set; }
+        int width { get; set; }
+        void Update(Point startPoint, Point endPoint);
+        bool Check();
         void Draw(Graphics graphics, Pen pen, Point[] pts);
        
     }
