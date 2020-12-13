@@ -46,6 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factor\IFactory.cs" />
+    <Compile Include="Factor\BrokenLinesFactory.cs" />
+    <Compile Include="Factor\CircleFactory.cs" />
+    <Compile Include="Factor\EllipseFactory.cs" />
+    <Compile Include="Factor\LineFactory.cs" />
+    <Compile Include="Factor\PTriangleFactory.cs" />
+    <Compile Include="Factor\SquareFactory.cs" />
+    <Compile Include="Factor\TriangleFactory.cs" />
+    <Compile Include="Factor\RectangleFigureFactory.cs" />
     <Compile Include="Figure\BrokenLines.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
