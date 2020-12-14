@@ -47,6 +47,7 @@ namespace GraficReadactorDevEdu.Figure
             if (CheckInside(x, x1, x2, accuracy) && CheckInside(y, y1, y2, accuracy))
                 return Math.Abs((x - x1) * (y2 - y1) - (y - y1) * (x2 - x1)) < accuracy / 2 * Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
             else return false;
+
         }
 
         private bool CheckInside(double x, double a, double b, double accuracy)
@@ -57,18 +58,16 @@ namespace GraficReadactorDevEdu.Figure
         }
         public bool IsItYou(Point point)
         {
-            //Point prevP = Points[3];
-            //foreach (Point p in Points)
-            //{
-            //    if (Contain(prevP, p, point, width))
-            //    {
-            //        return true;
-            //    }
-            //    prevP = p;
-            //}
-
-
-            return true;
+            Point prevP = Points[3];
+            foreach (Point p in Points)
+            {
+                if (Contain(prevP, p, point, width))
+                {
+                    return true;
+                }
+                prevP = p;
+            }
+            return false;
         }
         public void Move(Point delta)
         {

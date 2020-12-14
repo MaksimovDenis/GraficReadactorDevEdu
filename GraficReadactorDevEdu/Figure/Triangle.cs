@@ -57,19 +57,20 @@ namespace GraficReadactorDevEdu.Figure
         }
         public bool IsItYou(Point point)
         {
-            //Point prevP = Points[3];
-            //foreach (Point p in Points)
-            //{
-            //    if (Contain(prevP, p, point, width))
-            //    {
-            //        return true;
-            //    }
-            //    prevP = p;
-            //}
+            Point prevP = Points[2];
+            foreach (Point p in Points)
+            {
+                if (Contain(prevP, p, point, width))
+                {
+                    return true;
+                }
+                prevP = p;
+            }
 
 
-            return true;
+            return false;
         }
+
         public void Move(Point delta)
         {
             for (int i = 0; i < Points.Count(); i++)

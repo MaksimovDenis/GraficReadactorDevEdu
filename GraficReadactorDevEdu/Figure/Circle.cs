@@ -59,7 +59,7 @@ namespace GraficReadactorDevEdu.Figure
         }
         public bool IsItYou(Point point)
         {
-            //Point prevP = Points[3];
+            //Point prevP = Points[1];
             //foreach (Point p in Points)
             //{
             //    if (Contain(prevP, p, point, width))
@@ -70,7 +70,7 @@ namespace GraficReadactorDevEdu.Figure
             //}
 
 
-            return true;
+            return false;
         }
 
         public void Move(Point delta)

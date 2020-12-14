@@ -69,7 +69,7 @@ namespace GraficReadactorDevEdu.Figure
             //    }
             //    prevP = p;
             //}
-            return true;
+            return false;
         }
         public void Move(Point delta)
         {
