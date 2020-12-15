@@ -216,7 +216,7 @@ namespace GraficReadactorDevEdu
                 pen.Color = figure.color;
                 pen.Width = figure.width;
                 figure.Draw(grafics, pen, figure.Points.ToArray());
-                //figure.DrawPolygon( pen, figure.Points.ToArray());
+               
             }
           
         }
@@ -347,6 +347,7 @@ namespace GraficReadactorDevEdu
         private void button13_Click(object sender, EventArgs e)
         {
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            Figures = new List<IFigure>();
             pictureBox1.Image = mainBm;
             
         }
