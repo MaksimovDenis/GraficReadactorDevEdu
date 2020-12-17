@@ -51,6 +51,7 @@
     <Compile Include="Factor\CircleFactory.cs" />
     <Compile Include="Factor\EllipseFactory.cs" />
     <Compile Include="Factor\LineFactory.cs" />
+    <Compile Include="Factor\NRegularPolygonFactory.cs" />
     <Compile Include="Factor\PTriangleFactory.cs" />
     <Compile Include="Factor\SquareFactory.cs" />
     <Compile Include="Factor\TriangleFactory.cs" />
@@ -58,8 +59,9 @@
     <Compile Include="Figure\BrokenLines.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
-    <Compile Include="Figure\IFigure.cs" />
+    <Compile Include="Figure\AFigure.cs" />
     <Compile Include="Figure\Line.cs" />
+    <Compile Include="Figure\NRegularPolygon.cs" />
     <Compile Include="Figure\PTriangle.cs" />
     <Compile Include="Figure\RectangleFigure.cs" />
     <Compile Include="Figure\Square.cs" />

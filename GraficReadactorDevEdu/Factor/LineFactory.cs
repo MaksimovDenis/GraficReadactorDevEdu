@@ -9,9 +9,9 @@ namespace GraficReadactorDevEdu.Factor
 {
     public class LineFactory : IFactory
     {
-        public IFigure CreateFigure()
+        public AFigure CreateFigure(IFactory factory)
         {
-            return new Line();
+            return new Line(factory);
         }
     }
 }

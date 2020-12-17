@@ -20,14 +20,14 @@ namespace GraficReadactorDevEdu
         Pen pen;
         bool MD = false;
         Point prevPoint;
-        IFigure currentFigure;
+        AFigure currentFigure;
         string name = "";
         int quantity = 0;
         Point endPoint;
         int tmp = 0;
         Point begin;
         int quantity2 = 0;
-        List<IFigure> Figures;
+        List<AFigure> Figures;
         IFactory factory;
         string mode;
         public Form1()
@@ -40,7 +40,7 @@ namespace GraficReadactorDevEdu
             MD = true;
             switch (mode)
             {
-                case "Draw": currentFigure = factory.CreateFigure();
+                case "Draw": currentFigure = factory.CreateFigure(factory);
                     if (name == "Ломанная линия")
                     {
 
@@ -118,7 +118,7 @@ namespace GraficReadactorDevEdu
                     break;
                 case "Move":
                     currentFigure = null;
-                    foreach (IFigure figure in Figures)
+                    foreach (AFigure figure in Figures)
                     {
                         if (figure.IsItYou(e.Location))
                         {
@@ -211,7 +211,7 @@ namespace GraficReadactorDevEdu
         {
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             grafics = Graphics.FromImage(mainBm);
-            foreach(IFigure figure in Figures)
+            foreach(AFigure figure in Figures)
             {
                 pen.Color = figure.color;
                 pen.Width = figure.width;
@@ -234,7 +234,7 @@ namespace GraficReadactorDevEdu
             pen = new Pen(colorDialog1.Color, (int)numericUpDown3.Value);
             prevPoint = new Point(0, 0);
             MD = false;
-            Figures = new List<IFigure>();
+            Figures = new List<AFigure>();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -303,6 +303,7 @@ namespace GraficReadactorDevEdu
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             quantity = (int)numericUpDown2.Value;
+            //currentFigure.N = (int)numericUpDown2.Value;
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -347,7 +348,7 @@ namespace GraficReadactorDevEdu
         private void button13_Click(object sender, EventArgs e)
         {
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            Figures = new List<IFigure>();
+            Figures = new List<AFigure>();
             pictureBox1.Image = mainBm;
             
         }
@@ -355,6 +356,13 @@ namespace GraficReadactorDevEdu
         private void button14_Click(object sender, EventArgs e)
         {
             mode = "Move";
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {   
+            name = "Правильный Многоугольник";
+            factory = new NRegularPolygonFactory();
+            mode = "Draw";
         }
     }
 }

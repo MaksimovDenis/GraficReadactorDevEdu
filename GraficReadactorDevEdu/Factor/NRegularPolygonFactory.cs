@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Factor
 {
-    public class SquareFactory : IFactory
+    public class NRegularPolygonFactory : IFactory
     {
         public AFigure CreateFigure(IFactory factory)
         {
-            return new Square(factory);
+            return new NRegularPolygon(factory);
         }
     }
 }
-

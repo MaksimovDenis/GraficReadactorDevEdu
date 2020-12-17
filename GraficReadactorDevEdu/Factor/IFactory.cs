@@ -9,6 +9,6 @@ namespace GraficReadactorDevEdu.Factor
 {
     public interface IFactory
     {
-        IFigure CreateFigure();
+        AFigure CreateFigure(IFactory factory);
     }
 }
