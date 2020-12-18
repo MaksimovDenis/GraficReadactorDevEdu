@@ -10,23 +10,28 @@ namespace GraficReadactorDevEdu.Figure
 {
     public class NRegularPolygon : AFigure//Правильный многоугольник 
     {
+        
         public NRegularPolygon(IFactory factorys)
         {
             factory = factorys;
         }
-
+       
         public override void Draw(Graphics graphics, Pen pen, Point[] pts)
         {
+            
             graphics.DrawPolygon(pen, pts);
         }
 
 
-        public int N { get; set; } = 6;
+     
         
 
         public override void Update(Point startPoint, Point endPoint)
         {
-
+            if (N == 0)
+            {
+                N = 3;
+            }
 
             Points = new List<Point>();
             var r = Math.Sqrt(Math.Pow(endPoint.Y - startPoint.Y, 2) + Math.Pow(endPoint.X - startPoint.X, 2));

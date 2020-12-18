@@ -41,77 +41,79 @@ namespace GraficReadactorDevEdu
             switch (mode)
             {
                 case "Draw": currentFigure = factory.CreateFigure(factory);
-                    if (name == "Ломанная линия")
-                    {
+                    currentFigure.UpN(quantity);//Для многоугольника
+                  
+                    //if (name == "Ломанная линия")
+                    //{
 
-                        if (tmp < quantity && tmp != 0)
-                        {
-                            prevPoint = endPoint;
+                    //    if (tmp < quantity && tmp != 0)
+                    //    {
+                    //        prevPoint = endPoint;
 
-                        }
+                    //    }
 
-                        if (tmp == quantity - 1)
-                        {
+                    //    if (tmp == quantity - 1)
+                    //    {
 
-                            tmp = 0;
-                        }
-                        else
-                        {
+                    //        tmp = 0;
+                    //    }
+                    //    else
+                    //    {
 
-                            tmp++;
-                        }
-                    }
-
-
-                    if (name == "Треугольник по трем точкам")
-                    {
-
-                        if (tmp == 0)
-                        {
-                            begin = e.Location;
-                        }
-                        if (tmp < 2 && tmp != 0)
-                        {
-                            prevPoint = endPoint;
-
-                        }
+                    //        tmp++;
+                    //    }
+                    //}
 
 
-                        if (tmp == 1)
-                        {
+                    //if (name == "Треугольник по трем точкам")
+                    //{
 
-                            tmp = 0;
-                        }
-                        else
-                        {
+                    //    if (tmp == 0)
+                    //    {
+                    //        begin = e.Location;
+                    //    }
+                    //    if (tmp < 2 && tmp != 0)
+                    //    {
+                    //        prevPoint = endPoint;
 
-                            tmp++;
-                        }
-                    }
+                    //    }
 
-                    if (name == "Многоугольник")
-                    {
-                        if (tmp == 0)
-                        {
-                            begin = e.Location;
-                        }
-                        if (tmp < quantity2 - 1 && tmp != 0)
-                        {
-                            prevPoint = endPoint;
 
-                        }
+                    //    if (tmp == 1)
+                    //    {
 
-                        if (tmp == quantity2 - 2)
-                        {
+                    //        tmp = 0;
+                    //    }
+                    //    else
+                    //    {
 
-                            tmp = 0;
-                        }
-                        else
-                        {
+                    //        tmp++;
+                    //    }
+                    //}
 
-                            tmp++;
-                        }
-                    }
+                    //if (name == "Многоугольник")
+                    //{
+                    //    if (tmp == 0)
+                    //    {
+                    //        begin = e.Location;
+                    //    }
+                    //    if (tmp < quantity2 - 1 && tmp != 0)
+                    //    {
+                    //        prevPoint = endPoint;
+
+                    //    }
+
+                    //    if (tmp == quantity2 - 2)
+                    //    {
+
+                    //        tmp = 0;
+                    //    }
+                    //    else
+                    //    {
+
+                    //        tmp++;
+                    //    }
+                    //}
 
                     currentFigure.color = pen.Color;
                     currentFigure.width = (int)pen.Width;
@@ -302,8 +304,7 @@ namespace GraficReadactorDevEdu
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            quantity = (int)numericUpDown2.Value;
-            //currentFigure.N = (int)numericUpDown2.Value;
+            quantity2= (int)numericUpDown2.Value;
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -363,6 +364,11 @@ namespace GraficReadactorDevEdu
             name = "Правильный Многоугольник";
             factory = new NRegularPolygonFactory();
             mode = "Draw";
+        }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+            quantity = (int)numericUpDown1.Value;
         }
     }
 }

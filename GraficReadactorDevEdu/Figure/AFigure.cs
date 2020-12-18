@@ -15,11 +15,14 @@ namespace GraficReadactorDevEdu.Figure
         public Color color { get; set; }
         public int width { get; set; }
         protected IFactory factory;
-        public int N { get; set; }
+        public  int N=3;
 
         public abstract void Draw(Graphics graphics, Pen pen, Point[] pts);
         public abstract void Update(Point startPoint, Point endPoint);
-
+        public void UpN(int quantity)
+        {
+            N = quantity;
+        }
         public bool Check()
         {
             if (Points == null)
@@ -48,7 +51,7 @@ namespace GraficReadactorDevEdu.Figure
                 return true;
             else return false;
         }
-        public bool IsItYou(Point point)
+        public bool IsItYou(Point point)//Исправить название!
         {
             Point prevP = Points[Points.Count() - 1];
             foreach (Point p in Points)
