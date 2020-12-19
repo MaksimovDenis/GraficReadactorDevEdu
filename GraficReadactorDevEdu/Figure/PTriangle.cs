@@ -20,6 +20,8 @@ namespace GraficReadactorDevEdu.Figure
             graphics.DrawPolygon(pen, pts);
         }
 
+
+
         public override void Update(Point startPoint, Point endPoint)
         {
 

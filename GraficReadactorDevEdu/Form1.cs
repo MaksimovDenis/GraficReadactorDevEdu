@@ -209,6 +209,7 @@ namespace GraficReadactorDevEdu
             }
 
         }
+        
         private void DrawAll()
         {
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
@@ -218,7 +219,7 @@ namespace GraficReadactorDevEdu
                 pen.Color = figure.color;
                 pen.Width = figure.width;
                 figure.Draw(grafics, pen, figure.Points.ToArray());
-               
+
             }
           
         }
@@ -365,10 +366,36 @@ namespace GraficReadactorDevEdu
             factory = new NRegularPolygonFactory();
             mode = "Draw";
         }
+        private void button16_Click(object sender, EventArgs e)
+        {
+            if(pictureBox1.Image!=null)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Сохранить картинку как...";
+                sfd.OverwritePrompt = true;
+                sfd.CheckPathExists = true;
+
+                sfd.Filter = "Image Files(*.BMP)|*.BMP | Image Files(*.JPG)|*.JPG|Image Files(*.PNG)|*.PNG|All file(*.*)|*.*";
+                sfd.ShowHelp = true;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        pictureBox1.Image.Save(sfd.FileName);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Невозможно сохранить изображение","Ошибка",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
 
         private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
         {
             quantity = (int)numericUpDown1.Value;
         }
+
     }
 }
