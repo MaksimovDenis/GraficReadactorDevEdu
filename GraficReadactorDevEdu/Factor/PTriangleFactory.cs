@@ -9,9 +9,9 @@ namespace GraficReadactorDevEdu.Factor
 {
     public class PTriangleFactory : IFactory
     {
-        public AFigure CreateFigure(IFactory factory)
+        public AFigure CreateFigure()
         {
-            return new PTriangle(factory);
+            return new PTriangle(this);
         }
     }
 }

@@ -15,9 +15,9 @@ namespace GraficReadactorDevEdu.Figure
             factory = factorys;
         }
 
-        public override void Draw(Graphics graphics, Pen pen, Point[] pts)
+        public override void Draw(Graphics graphics, Pen pen)
         {
-            graphics.DrawPolygon(pen, pts);
+            graphics.DrawPolygon(pen, Points.ToArray());
         }
 
 
@@ -32,6 +32,16 @@ namespace GraficReadactorDevEdu.Figure
                new Point (startPoint.X, endPoint.Y),
             };
         }
-        
+
+        public override void DrawEndLine(Graphics grafics, Pen pen)
+        {
+            return;
+        }
+
+        public override void UpN(int quantity)
+        {
+            N = quantity;
+        }
+
     }
 }

@@ -9,9 +9,9 @@ namespace GraficReadactorDevEdu.Factor
 {
     public class BrokenLinesFactory  : IFactory
     {
-        public AFigure CreateFigure(IFactory factory)
+        public AFigure CreateFigure()
         {
-            return new BrokenLines(factory);
+            return new BrokenLines(this);
         }
     }
 }

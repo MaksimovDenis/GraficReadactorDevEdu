@@ -9,9 +9,9 @@ namespace GraficReadactorDevEdu.Factor
 {
     public class NRegularPolygonFactory : IFactory
     {
-        public AFigure CreateFigure(IFactory factory)
+        public AFigure CreateFigure()
         {
-            return new NRegularPolygon(factory);
+            return new NRegularPolygon(this);
         }
     }
 }

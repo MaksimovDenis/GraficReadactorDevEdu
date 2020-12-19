@@ -15,9 +15,9 @@ namespace GraficReadactorDevEdu.Figure
             factory = factorys;
         }
 
-        public override void Draw(Graphics graphics, Pen pen, Point[] pts)
+        public override void Draw(Graphics graphics, Pen pen)
         {
-            graphics.DrawLine(pen, pts[0], pts[1]);
+            graphics.DrawLine(pen, Points[0], Points[1]);
         }
         public override void Update(Point startPoint, Point endPoint)
         {
@@ -28,6 +28,16 @@ namespace GraficReadactorDevEdu.Figure
                
             };
         }
-        
+
+        public override void DrawEndLine(Graphics grafics, Pen pen)
+        {
+            return;
+        }
+
+        public override void UpN(int quantity)
+        {
+            N = quantity;
+        }
+
     }
 }

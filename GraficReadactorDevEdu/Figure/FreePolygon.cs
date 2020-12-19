@@ -8,20 +8,30 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-    public class BrokenLines : AFigure
+    public class FreePolygon : AFigure
     {
-        public BrokenLines(IFactory factorys)
+
+
+        public FreePolygon(IFactory factorys)
         {
             factory = factorys;
+
         }
 
-        public Point tmpPoint;
         public override void Draw(Graphics graphics, Pen pen)
         {
 
             graphics.DrawLine(pen, Points[0], Points[1]);
+
         }
 
+        public override void DrawEndLine(Graphics grafics, Pen pen)
+        {
+            if (tmp == 0)
+            {
+                grafics.DrawLine(pen, begin, endPoint);
+            }
+        }
 
         public override void Update(Point startPoint, Point endPoint)
         {
@@ -33,15 +43,11 @@ namespace GraficReadactorDevEdu.Figure
 
             };
         }
-        public override void DrawEndLine(Graphics grafics, Pen pen)
-        {
-            return;
-        }
 
         public override void UpN(int quantity)
         {
             N = quantity;
-        }
 
+        }
     }
 }

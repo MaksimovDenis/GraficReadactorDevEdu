@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Factor
 {
-    public class LineFactory : IFactory
+    public class FreeTriangleFactory : IFactory
     {
         public AFigure CreateFigure()
         {
-            return new Line(this);
+            return new FreeTriangle(this);
         }
     }
 }

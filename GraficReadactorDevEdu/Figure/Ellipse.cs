@@ -14,13 +14,13 @@ namespace GraficReadactorDevEdu.Figure
         {
             factory = factorys;
         }
-        public override void Draw(Graphics graphics, Pen pen, Point[] pts)
+        public override void Draw(Graphics graphics, Pen pen)
         {
             graphics.DrawEllipse(pen,
-                pts[0].X,
-                pts[0].Y,
-                pts[1].X - pts[0].X,
-                pts[1].Y - pts[0].Y);
+                Points[0].X,
+                Points[0].Y,
+                Points[1].X - Points[0].X,
+                Points[1].Y - Points[0].Y);
         }
 
         public override void Update(Point startPoint, Point endPoint)
@@ -33,7 +33,17 @@ namespace GraficReadactorDevEdu.Figure
             };
         }
 
-        
-        
+        public override void DrawEndLine(Graphics grafics, Pen pen)
+        {
+            return;
+        }
+
+        public override void UpN(int quantity)
+        {
+            N = quantity;
+        }
+
+
+
     }
 }

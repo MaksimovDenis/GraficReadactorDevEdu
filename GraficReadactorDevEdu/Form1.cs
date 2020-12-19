@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,20 +20,20 @@ namespace GraficReadactorDevEdu
         Graphics grafics;
         Pen pen;
         bool MD = false;
-        Point prevPoint;
+        IFactory factory;
         AFigure currentFigure;
         string name = "";
         int quantity = 0;
-        Point endPoint;
-        int tmp = 0;
+
         Point begin;
         int quantity2 = 0;
         List<AFigure> Figures;
-        IFactory factory;
         string mode;
         public Form1()
         {
             InitializeComponent();
+            factory = new LineFactory();
+            currentFigure = factory.CreateFigure();
         }
 
         private void pictureBox1_MouseDown_1(object sender, MouseEventArgs e)
@@ -40,81 +41,11 @@ namespace GraficReadactorDevEdu
             MD = true;
             switch (mode)
             {
-                case "Draw": currentFigure = factory.CreateFigure(factory);
-                    currentFigure.UpN(quantity);//Для многоугольника
-                  
-                    //if (name == "Ломанная линия")
-                    //{
+                case "Draw":
 
-                    //    if (tmp < quantity && tmp != 0)
-                    //    {
-                    //        prevPoint = endPoint;
-
-                    //    }
-
-                    //    if (tmp == quantity - 1)
-                    //    {
-
-                    //        tmp = 0;
-                    //    }
-                    //    else
-                    //    {
-
-                    //        tmp++;
-                    //    }
-                    //}
-
-
-                    //if (name == "Треугольник по трем точкам")
-                    //{
-
-                    //    if (tmp == 0)
-                    //    {
-                    //        begin = e.Location;
-                    //    }
-                    //    if (tmp < 2 && tmp != 0)
-                    //    {
-                    //        prevPoint = endPoint;
-
-                    //    }
-
-
-                    //    if (tmp == 1)
-                    //    {
-
-                    //        tmp = 0;
-                    //    }
-                    //    else
-                    //    {
-
-                    //        tmp++;
-                    //    }
-                    //}
-
-                    //if (name == "Многоугольник")
-                    //{
-                    //    if (tmp == 0)
-                    //    {
-                    //        begin = e.Location;
-                    //    }
-                    //    if (tmp < quantity2 - 1 && tmp != 0)
-                    //    {
-                    //        prevPoint = endPoint;
-
-                    //    }
-
-                    //    if (tmp == quantity2 - 2)
-                    //    {
-
-                    //        tmp = 0;
-                    //    }
-                    //    else
-                    //    {
-
-                    //        tmp++;
-                    //    }
-                    //}
-
+                    currentFigure.UpN(quantity);
+                    currentFigure.UpdateBegin(e.Location);
+                    currentFigure.MousDown();
                     currentFigure.color = pen.Color;
                     currentFigure.width = (int)pen.Width;
                     break;
@@ -132,10 +63,10 @@ namespace GraficReadactorDevEdu
                             break;
                         }
                     }
-               break;
-          
+                    break;
+
             }
-            
+
         }
 
 
@@ -143,26 +74,16 @@ namespace GraficReadactorDevEdu
         {
             MD = false;
             mainBm = tmpBm;
-            if (name == "Треугольник по трем точкам" || (name == "Многоугольник" && tmp == 0))
-            {
-                grafics.DrawLine(pen, begin, e.Location);//
+            currentFigure.DrawEndLine(grafics, pen);
+            Figures.Add(currentFigure);
 
-            }
-
-            if (currentFigure!=null)
-            {
-                Figures.Add(currentFigure);
-            }
-            else
-            {
-                return;
-            }
             pictureBox1.Image = tmpBm;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (MD && currentFigure != null)
+
+            if (MD)
             {
                 tmpBm = (Bitmap)mainBm.Clone();
                 grafics = Graphics.FromImage(tmpBm);
@@ -183,59 +104,60 @@ namespace GraficReadactorDevEdu
                         //}
                         //else
                         //{
-                           
 
-                            currentFigure.Update(prevPoint, e.Location);
 
-                            endPoint = e.Location;//нужно для ломанных линий
+                        currentFigure.Update(currentFigure.GetPrevPoint(), e.Location);
+
+                        currentFigure.SetEndPoint(e.Location);//нужно для ломанных линий
                         //}
 
 
                         break;
                     case "Move":
-                        Point delta = new Point(e.X - prevPoint.X, e.Y - prevPoint.Y);
+                        Point delta = new Point(e.X - currentFigure.prevPoint.X, e.Y - currentFigure.prevPoint.Y);
                         currentFigure.Move(delta);
-                        prevPoint = e.Location;
+                        currentFigure.SetPrevPoint(e.Location);
                         break;
 
                 }
-                            currentFigure.Draw(grafics, pen, currentFigure.Points.ToArray());
-                        pictureBox1.Image = tmpBm;
-                        GC.Collect();
+                currentFigure.Draw(grafics, pen);
+                pictureBox1.Image = tmpBm;
+                GC.Collect();
             }
             else
             {
-                prevPoint = e.Location;
+                currentFigure.SetPrevPoint(e.Location);
             }
 
-        }
-        
+    }
         private void DrawAll()
         {
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             grafics = Graphics.FromImage(mainBm);
-            foreach(AFigure figure in Figures)
+            foreach (AFigure figure in Figures)
             {
                 pen.Color = figure.color;
                 pen.Width = figure.width;
-                figure.Draw(grafics, pen, figure.Points.ToArray());
+                figure.Draw(grafics, pen);
 
             }
-          
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
             factory = new RectangleFigureFactory();
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            
+
             pen = new Pen(colorDialog1.Color, (int)numericUpDown3.Value);
-            prevPoint = new Point(0, 0);
+
+            currentFigure?.SetPrevPoint(new Point(0, 0));
             MD = false;
             Figures = new List<AFigure>();
         }
@@ -244,7 +166,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Линия";
             factory = new LineFactory();
-          
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
@@ -252,7 +174,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Квадрат";
             factory = new SquareFactory();
-           
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
@@ -260,7 +182,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Круг";
             factory = new CircleFactory();
-          
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
@@ -268,7 +190,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Эллипс";
             factory = new EllipseFactory();
-            
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
@@ -276,7 +198,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Равнобедренный треугольник";
             factory = new TriangleFactory();
-          
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
@@ -284,45 +206,46 @@ namespace GraficReadactorDevEdu
         {
             name = "Прямоугольный треугольник";
             factory = new PTriangleFactory();
-       
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             name = "Кисть";
-         
+
             mode = "Draw";
         }
         private void button5_Click_1(object sender, EventArgs e)
         {
             name = "Ломанная линия";
             factory = new BrokenLinesFactory();
-            tmp = 0;
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
 
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            quantity2= (int)numericUpDown2.Value;
+            quantity = (int)numericUpDown2.Value;
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             name = "Треугольник по трем точкам";
 
-            factory = new BrokenLinesFactory();
-            tmp = 0;
+            factory = new FreeTriangleFactory();
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             name = "Многоугольник";
-            factory = new BrokenLinesFactory();
+            factory = new FreePolygonFactory();
+            currentFigure = factory.CreateFigure();
             quantity2 = (int)numericUpDown1.Value;
-            tmp = 0;
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
@@ -335,12 +258,13 @@ namespace GraficReadactorDevEdu
         {
             ColorDialog MyDialog = new ColorDialog();
 
-            if (MyDialog.ShowDialog()==DialogResult.OK)
+            if (MyDialog.ShowDialog() == DialogResult.OK)
             {
                 pen.Color = MyDialog.Color;
             }
-            
+
         }
+
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
@@ -352,7 +276,7 @@ namespace GraficReadactorDevEdu
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Figures = new List<AFigure>();
             pictureBox1.Image = mainBm;
-            
+
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -361,14 +285,21 @@ namespace GraficReadactorDevEdu
         }
 
         private void button15_Click(object sender, EventArgs e)
-        {   
+        {
             name = "Правильный Многоугольник";
             factory = new NRegularPolygonFactory();
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+            quantity = (int)numericUpDown1.Value;
+        }
+
         private void button16_Click(object sender, EventArgs e)
         {
-            if(pictureBox1.Image!=null)
+            if (pictureBox1.Image != null)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Title = "Сохранить картинку как...";
@@ -386,16 +317,14 @@ namespace GraficReadactorDevEdu
                     }
                     catch
                     {
-                        MessageBox.Show("Невозможно сохранить изображение","Ошибка",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Невозможно сохранить изображение", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
+        private void button17_Click(object sender, EventArgs e) 
+        { 
 
-        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
-        {
-            quantity = (int)numericUpDown1.Value;
         }
-
     }
 }

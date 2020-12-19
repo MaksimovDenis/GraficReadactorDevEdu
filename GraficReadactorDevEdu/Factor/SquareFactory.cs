@@ -9,9 +9,9 @@ namespace GraficReadactorDevEdu.Factor
 {
     public class SquareFactory : IFactory
     {
-        public AFigure CreateFigure(IFactory factory)
+        public AFigure CreateFigure()
         {
-            return new Square(factory);
+            return new Square(this);
         }
     }
 }

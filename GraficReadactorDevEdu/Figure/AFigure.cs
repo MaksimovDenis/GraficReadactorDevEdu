@@ -16,13 +16,62 @@ namespace GraficReadactorDevEdu.Figure
         public int width { get; set; }
         protected IFactory factory;
         public  int N=3;
-
-        public abstract void Draw(Graphics graphics, Pen pen, Point[] pts);
-        public abstract void Update(Point startPoint, Point endPoint);
-        public void UpN(int quantity)
+        public Point prevPoint;
+        public Point endPoint;
+        public int tmp=0;
+        public Point begin;
+        public void SetEndPoint(Point point)
         {
-            N = quantity;
+            endPoint = point;
         }
+        public void SetPrevPoint(Point point)
+        {
+            prevPoint = point;
+
+        }
+        public void MousDown()
+        {
+
+            if (tmp < N && tmp != 0)
+            {
+                this.SetPrevPoint(endPoint);
+            }
+
+            if (tmp == N - 1)
+            {
+
+                tmp = 0;
+            }
+            else
+            {
+                tmp++;
+            }
+        }
+
+        public abstract void DrawEndLine(Graphics grafics, Pen pen);
+
+        public void UpdateBegin(Point point)
+        {
+            if (tmp == 0)
+            {
+                begin = point;
+            }
+        }
+        public Point GetPrevPoint()
+        {
+
+            return prevPoint;
+        }
+        public Point GetEndPoint()
+        {
+
+            return endPoint;
+        }
+        public abstract void Draw(Graphics graphics, Pen pen);
+        public abstract void Update(Point startPoint, Point endPoint);
+        public abstract void UpN(int quantity);
+
+
         public bool Check()
         {
             if (Points == null)

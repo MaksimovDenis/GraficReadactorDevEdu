@@ -9,9 +9,9 @@ namespace GraficReadactorDevEdu.Factor
 {
     public class EllipseFactory : IFactory
     {
-        public AFigure CreateFigure(IFactory factory)
+        public AFigure CreateFigure()
         {
-            return new Ellipse(factory);
+            return new Ellipse(this);
         }
     }
 }

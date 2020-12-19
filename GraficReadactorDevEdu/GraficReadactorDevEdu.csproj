@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factor\FreePolygonFactrory.cs" />
+    <Compile Include="Factor\FreeTriangleFactory.cs" />
     <Compile Include="Factor\IFactory.cs" />
     <Compile Include="Factor\BrokenLinesFactory.cs" />
     <Compile Include="Factor\CircleFactory.cs" />
@@ -58,8 +60,10 @@
     <Compile Include="Factor\RectangleFigureFactory.cs" />
     <Compile Include="Figure\BrokenLines.cs" />
     <Compile Include="Figure\Circle.cs" />
+    <Compile Include="Figure\FreePolygon.cs" />
     <Compile Include="Figure\Ellipse.cs" />
     <Compile Include="Figure\AFigure.cs" />
+    <Compile Include="Figure\FreeTriangle.cs" />
     <Compile Include="Figure\Line.cs" />
     <Compile Include="Figure\NRegularPolygon.cs" />
     <Compile Include="Figure\PTriangle.cs" />

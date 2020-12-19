@@ -9,9 +9,9 @@ namespace GraficReadactorDevEdu.Factor
 {
     public class CircleFactory : IFactory
     {
-        public AFigure CreateFigure(IFactory factory)
+        public AFigure CreateFigure()
         {
-            return new Circle(factory);
+            return new Circle(this);
         }
     }
 }
