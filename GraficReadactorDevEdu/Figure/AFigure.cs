@@ -129,6 +129,16 @@ namespace GraficReadactorDevEdu.Figure
             }
 
         }
+        public void Veer(Graphics graphics, Point point)
+        {
+            for (int i = 0; i < Points.Count(); i++)
+            {
+                Point p = Points[i];
+
+                Points[i] = new Point(point.X,  point.Y );
+            }
+
+        }
 
         public abstract void FillPolygon(Graphics graphics, Brush brush);
        

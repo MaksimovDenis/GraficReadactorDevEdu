@@ -78,6 +78,21 @@ namespace GraficReadactorDevEdu
                         }
                     }
                     break;
+                case "Veer":
+                    currentFigure = null;
+                    foreach (AFigure figure in Figures)
+                    {
+                        if (figure.IsItYou(e.Location))
+                        {
+                            currentFigure = figure;
+                            Figures.Remove(currentFigure);
+                            DrawAll();
+                            pen.Color = figure.color;
+                            pen.Width = figure.width;
+                            break;
+                        }
+                    }
+                    break;
 
             }
 
@@ -116,6 +131,19 @@ namespace GraficReadactorDevEdu
                         case "Move":
                             Point delta = new Point(e.X - currentFigure.prevPoint.X, e.Y - currentFigure.prevPoint.Y);
                             currentFigure.Move(delta);
+                            currentFigure.SetPrevPoint(e.Location);
+                            break;
+                        case "Veer":
+                            Point angle = new Point(0,0);
+                            int alpha = 5;
+                            angle.X =(int) (currentFigure.prevPoint.X * Math.Acos(alpha) - currentFigure.prevPoint.Y * Math.Asin(alpha));
+                            angle.Y = (int)(currentFigure.prevPoint.Y * Math.Acos(alpha) + currentFigure.prevPoint.X * Math.Asin(alpha));
+                                //float ang = (float)Math.Atan(angle.Y / angle.X);
+                            //grafics.RotateTransform(30F);
+                            currentFigure.Veer(grafics, angle);
+
+
+                            //}
                             currentFigure.SetPrevPoint(e.Location);
                             break;
 
@@ -364,6 +392,11 @@ namespace GraficReadactorDevEdu
         private void button18_Click(object sender, EventArgs e)
         {
             mode = "Fill";
+        }
+
+        private void button17_Click_1(object sender, EventArgs e)
+        {
+            mode = "Veer";
         }
     }
 }
