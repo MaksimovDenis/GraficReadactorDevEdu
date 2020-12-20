@@ -43,5 +43,14 @@ namespace GraficReadactorDevEdu.Figure
             N = quantity;
         }
 
+        public override void FillPolygon(Graphics graphics, Brush brush)
+        {
+           
+        graphics.FillEllipse(brush, Points[0].X,
+                Points[0].Y,
+                Points[1].X - Points[0].X,
+                 Points[1].X - Points[0].X);
+        }
+
     }
 }

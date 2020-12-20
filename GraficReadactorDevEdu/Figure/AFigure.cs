@@ -103,9 +103,13 @@ namespace GraficReadactorDevEdu.Figure
         public bool IsItYou(Point point)//Исправить название!
         {
             Point prevP = Points[Points.Count() - 1];
+            if (Points == null)
+            {
+                return false;
+            }
             foreach (Point p in Points)
             {
-                if (Contain(prevP, p, point, width))
+                if (Contain(prevP, p, point, width*10))
                 {
                     return true;
                 }
@@ -126,11 +130,9 @@ namespace GraficReadactorDevEdu.Figure
 
         }
 
-        public void FillPolygon(Graphics graphics, Brush brush)
-        {
-            graphics.FillPolygon(brush, Points.ToArray());
-        }
-    }
+        public abstract void FillPolygon(Graphics graphics, Brush brush);
+       
+}
 
 
 

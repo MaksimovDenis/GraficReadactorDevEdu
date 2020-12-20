@@ -33,6 +33,11 @@ namespace GraficReadactorDevEdu.Figure
             }
         }
 
+        public override void FillPolygon(Graphics graphics, Brush brush)
+        {
+            
+        }
+
         public override void Update(Point startPoint, Point endPoint)
         {
 

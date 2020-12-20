@@ -88,7 +88,7 @@ namespace GraficReadactorDevEdu
         {
             MD = false;
             mainBm = tmpBm;
-            currentFigure.DrawEndLine(grafics, pen);
+            currentFigure?.DrawEndLine(grafics, pen);
             Figures.Add(currentFigure);
 
             pictureBox1.Image = tmpBm;
@@ -99,34 +99,36 @@ namespace GraficReadactorDevEdu
 
             if (MD)
             {
-                
-                tmpBm = (Bitmap)mainBm.Clone();
-                grafics = Graphics.FromImage(tmpBm);
-                switch (mode)
+                if (currentFigure != null)
                 {
-                    case "Draw":
+                    tmpBm = (Bitmap)mainBm.Clone();
+                    grafics = Graphics.FromImage(tmpBm);
+                    switch (mode)
+                    {
+                        case "Draw":
                             currentFigure.Update(currentFigure.GetPrevPoint(), e.Location);
-                        if (name == "Кисть")
-                        {
-                            grafics = Graphics.FromImage(mainBm);
-                        }
+                            if (name == "Кисть")
+                            {
+                                grafics = Graphics.FromImage(mainBm);
+                            }
                             currentFigure.SetEndPoint(e.Location);
-                        break;
-                    case "Move":
-                        Point delta = new Point(e.X - currentFigure.prevPoint.X, e.Y - currentFigure.prevPoint.Y);
-                        currentFigure.Move(delta);
+                            break;
+                        case "Move":
+                            Point delta = new Point(e.X - currentFigure.prevPoint.X, e.Y - currentFigure.prevPoint.Y);
+                            currentFigure.Move(delta);
+                            currentFigure.SetPrevPoint(e.Location);
+                            break;
+
+
+                    }
+                    currentFigure.Draw(grafics, pen);
+                    if (name == "Кисть")
+                    {
                         currentFigure.SetPrevPoint(e.Location);
-                        break;
-
-
+                    }
+                    pictureBox1.Image = tmpBm;
+                    GC.Collect();
                 }
-                currentFigure.Draw(grafics, pen);
-                if (name == "Кисть")
-                {
-                    currentFigure.SetPrevPoint(e.Location);
-                }
-                pictureBox1.Image = tmpBm;
-                GC.Collect();
             }
             else
             {

@@ -45,5 +45,10 @@ namespace GraficReadactorDevEdu.Figure
         {
             N = quantity;
         }
+
+        public override void FillPolygon(Graphics graphics, Brush brush)
+        {
+            
+        }
     }
 }
