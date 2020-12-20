@@ -42,7 +42,7 @@ namespace GraficReadactorDevEdu
             switch (mode)
             {
                 case "Draw":
-
+               
                     currentFigure.UpN(quantity);
                     currentFigure.UpdateBegin(e.Location);
                     currentFigure.MousDown();
@@ -71,6 +71,7 @@ namespace GraficReadactorDevEdu
                         if (figure.IsItYou(e.Location))
                         {
                             currentFigure = figure;
+                            Figures.Remove(currentFigure);
                             currentFigure.FillPolygon(grafics, brush2);
 
                             break;
@@ -98,6 +99,7 @@ namespace GraficReadactorDevEdu
 
             if (MD)
             {
+                
                 tmpBm = (Bitmap)mainBm.Clone();
                 grafics = Graphics.FromImage(tmpBm);
                 switch (mode)
@@ -169,6 +171,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Линия";
             factory = new LineFactory();
+            quantity = 0;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -177,6 +180,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Квадрат";
             factory = new SquareFactory();
+            quantity = 0;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -185,6 +189,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Круг";
             factory = new CircleFactory();
+            quantity = 0;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -193,6 +198,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Эллипс";
             factory = new EllipseFactory();
+            quantity = 0;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -201,6 +207,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Равнобедренный треугольник";
             factory = new TriangleFactory();
+            quantity = 0;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -209,6 +216,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Прямоугольный треугольник";
             factory = new PTriangleFactory();
+            quantity = 0;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -217,6 +225,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Кисть";
             factory = new PenFactory();
+            quantity = 0;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -224,7 +233,10 @@ namespace GraficReadactorDevEdu
         {
             name = "Ломанная линия";
             factory = new BrokenLinesFactory();
+
             currentFigure = factory.CreateFigure();
+             quantity = (int)numericUpDown1.Value;
+            currentFigure.UpN(quantity);
             mode = "Draw";
 
         }
@@ -240,16 +252,20 @@ namespace GraficReadactorDevEdu
 
             factory = new FreeTriangleFactory();
             currentFigure = factory.CreateFigure();
+            quantity = (int)numericUpDown1.Value;
+            currentFigure.UpN(quantity);
             mode = "Draw";
         }
 
         private void button11_Click(object sender, EventArgs e)
+            
         {
             name = "Многоугольник";
             factory = new FreePolygonFactory();
             currentFigure = factory.CreateFigure();
             quantity2 = (int)numericUpDown1.Value;
-            currentFigure = factory.CreateFigure();
+           
+            currentFigure.UpN(quantity);
             mode = "Draw";
         }
 
@@ -293,6 +309,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Правильный Многоугольник";
             factory = new NRegularPolygonFactory();
+            quantity = (int)numericUpDown1.Value;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
