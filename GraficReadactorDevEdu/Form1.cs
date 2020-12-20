@@ -151,6 +151,8 @@ namespace GraficReadactorDevEdu
         {
             factory = new RectangleFigureFactory();
             currentFigure = factory.CreateFigure();
+            quantity = 0;
+            currentFigure.UpN(0);
             mode = "Draw";
 
         }
@@ -172,6 +174,7 @@ namespace GraficReadactorDevEdu
             name = "Линия";
             factory = new LineFactory();
             quantity = 0;
+            currentFigure.UpN(0);
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -181,6 +184,7 @@ namespace GraficReadactorDevEdu
             name = "Квадрат";
             factory = new SquareFactory();
             quantity = 0;
+            currentFigure.UpN(0);
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -190,6 +194,7 @@ namespace GraficReadactorDevEdu
             name = "Круг";
             factory = new CircleFactory();
             quantity = 0;
+            currentFigure.UpN(0);
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -199,6 +204,7 @@ namespace GraficReadactorDevEdu
             name = "Эллипс";
             factory = new EllipseFactory();
             quantity = 0;
+            currentFigure.UpN(0);
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -208,6 +214,7 @@ namespace GraficReadactorDevEdu
             name = "Равнобедренный треугольник";
             factory = new TriangleFactory();
             quantity = 0;
+            currentFigure.UpN(0);
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -216,6 +223,7 @@ namespace GraficReadactorDevEdu
         {
             name = "Прямоугольный треугольник";
             factory = new PTriangleFactory();
+            currentFigure.UpN(0);
             quantity = 0;
             currentFigure = factory.CreateFigure();
             mode = "Draw";
@@ -226,6 +234,7 @@ namespace GraficReadactorDevEdu
             name = "Кисть";
             factory = new PenFactory();
             quantity = 0;
+            currentFigure.UpN(0);
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
@@ -310,6 +319,7 @@ namespace GraficReadactorDevEdu
             name = "Правильный Многоугольник";
             factory = new NRegularPolygonFactory();
             quantity = (int)numericUpDown1.Value;
+            currentFigure.UpN(0);
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
