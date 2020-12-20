@@ -8,20 +8,24 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-    public class Pen : AFigure
+    public class Pencil : AFigure
     {
 
-        public Pen(IFactory factorys)
+        public Pencil(IFactory factorys)
         {
             factory = factorys;
         }
-        grafics = Graphics.FromImage(mainBm);
-                        //    grafics.DrawLine(pen, prevPoint, e.Location);
-                        //    prevPoint = e.Location;
+
         public override void Draw(Graphics graphics, Pen pen)
         {
-            graphics.DrawLine(pen, );
+
+            graphics.DrawLine(pen,prevPoint, Points[1]);
         }
+
+
+
+
+
         public override void Update(Point startPoint, Point endPoint)
         {
             Points = new List<Point>
@@ -32,5 +36,14 @@ namespace GraficReadactorDevEdu.Figure
             };
         }
 
+        public override void DrawEndLine(Graphics grafics, Pen pen)
+        {
+            return;
+        }
+
+        public override void UpN(int quantity)
+        {
+            N = quantity;
+        }
     }
 }

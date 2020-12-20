@@ -24,8 +24,6 @@ namespace GraficReadactorDevEdu
         AFigure currentFigure;
         string name = "";
         int quantity = 0;
-
-        Point begin;
         int quantity2 = 0;
         List<AFigure> Figures;
         string mode;
@@ -94,24 +92,12 @@ namespace GraficReadactorDevEdu
 
 
 
-                        //if (name == "Кисть")
-                        //{
-
-                        //    grafics = Graphics.FromImage(mainBm);
-                        //    grafics.DrawLine(pen, prevPoint, e.Location);
-                        //    prevPoint = e.Location;
-
-                        //}
-                        //else
-                        //{
-
-
-                        currentFigure.Update(currentFigure.GetPrevPoint(), e.Location);
-
-                        currentFigure.SetEndPoint(e.Location);//нужно для ломанных линий
-                        //}
-
-
+                            currentFigure.Update(currentFigure.GetPrevPoint(), e.Location);
+                        if (name == "Кисть")
+                        {
+                            grafics = Graphics.FromImage(mainBm);
+                        }
+                            currentFigure.SetEndPoint(e.Location);
                         break;
                     case "Move":
                         Point delta = new Point(e.X - currentFigure.prevPoint.X, e.Y - currentFigure.prevPoint.Y);
@@ -121,6 +107,10 @@ namespace GraficReadactorDevEdu
 
                 }
                 currentFigure.Draw(grafics, pen);
+                if (name == "Кисть")
+                {
+                    currentFigure.SetPrevPoint(e.Location);
+                }
                 pictureBox1.Image = tmpBm;
                 GC.Collect();
             }
@@ -213,7 +203,8 @@ namespace GraficReadactorDevEdu
         private void button9_Click(object sender, EventArgs e)
         {
             name = "Кисть";
-
+            factory = new PenFactory();
+            currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
         private void button5_Click_1(object sender, EventArgs e)

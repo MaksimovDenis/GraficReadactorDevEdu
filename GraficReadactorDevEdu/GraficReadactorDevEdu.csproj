@@ -54,6 +54,7 @@
     <Compile Include="Factor\EllipseFactory.cs" />
     <Compile Include="Factor\LineFactory.cs" />
     <Compile Include="Factor\NRegularPolygonFactory.cs" />
+    <Compile Include="Factor\PenFactory.cs" />
     <Compile Include="Factor\PTriangleFactory.cs" />
     <Compile Include="Factor\SquareFactory.cs" />
     <Compile Include="Factor\TriangleFactory.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Figure\FreeTriangle.cs" />
     <Compile Include="Figure\Line.cs" />
     <Compile Include="Figure\NRegularPolygon.cs" />
+    <Compile Include="Figure\Pencil.cs" />
     <Compile Include="Figure\PTriangle.cs" />
     <Compile Include="Figure\RectangleFigure.cs" />
     <Compile Include="Figure\Square.cs" />
