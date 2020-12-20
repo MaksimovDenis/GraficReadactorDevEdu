@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System.Drawing;
 using System;
+using GraficReadactorDevEdu.Factor;
 using GraficReadactorDevEdu.Figure;
 
 namespace GraficReadactorDevEdu.Tests.FigureTests
@@ -10,19 +11,20 @@ namespace GraficReadactorDevEdu.Tests.FigureTests
     {
         [Test]
 
-        public void GetPointsTest()
+        public void UpdateTest()
         {
             //arrange
-            var ptriangle = new PTriangle();
+            var factory = new PTriangleFactory();
+            var ptriangle = new PTriangle(factory);
             var startPoint = new Point(0,0);
             var Point = new Point(2, 0);
             var endPoint = new Point(0, 2);
             //act
-            var points = ptriangle.GetPoints(startPoint, endPoint);
+            ptriangle.Update(startPoint, endPoint);
             //assert        
 
-            Assert.AreEqual(startPoint, points[0]);
-            Assert.AreEqual(endPoint, points[1]);
+            Assert.AreEqual(startPoint, ptriangle.Points[0]);
+            Assert.AreEqual(endPoint, ptriangle.Points[1]);
 
 
         }

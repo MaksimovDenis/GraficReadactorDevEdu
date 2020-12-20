@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System.Drawing;
 using System;
+using GraficReadactorDevEdu.Factor;
 using GraficReadactorDevEdu.Figure;
 
 namespace GraficReadactorDevEdu.Tests
@@ -12,19 +13,21 @@ namespace GraficReadactorDevEdu.Tests
         [Test]
 
         /*[TestCase(5, 5)]*/
-        public void GetPointsTest()
+        public void UpdateTest()
         {
             //arrange
-            var line = new Line();
+            var factory = new LineFactory();
+            var line = new Line(factory);
             var startPoint = new Point(0, 0);
             var endPoint = new Point(2, 0);
             //act
-            var points = line.GetPoints(startPoint, endPoint);
+            //var point = new List<Point>;
+            line.Update(startPoint, endPoint);
             //assert        
 
 
-            Assert.AreEqual(startPoint, points[0]);
-            Assert.AreEqual(endPoint, points[1]);
+            Assert.AreEqual(startPoint, line.Points[0]);
+            Assert.AreEqual(endPoint, line.Points[1]);
 
 
         }
