@@ -19,8 +19,10 @@ namespace GraficReadactorDevEdu
         Bitmap tmpBm;
         Graphics grafics;
         Pen pen;
+        Pen penNoDraw;
         bool MD = false;
         IFactory factory;
+        SolidBrush brush2;
         AFigure currentFigure;
         string name = "";
         int quantity = 0;
@@ -63,6 +65,19 @@ namespace GraficReadactorDevEdu
                     }
                     break;
 
+                case "Fill":
+                    foreach (AFigure figure in Figures)
+                    {
+                        if (figure.IsItYou(e.Location))
+                        {
+                            currentFigure = figure;
+                            currentFigure.FillPolygon(grafics, brush2);
+
+                            break;
+                        }
+                    }
+                    break;
+
             }
 
         }
@@ -88,10 +103,6 @@ namespace GraficReadactorDevEdu
                 switch (mode)
                 {
                     case "Draw":
-
-
-
-
                             currentFigure.Update(currentFigure.GetPrevPoint(), e.Location);
                         if (name == "Кисть")
                         {
@@ -104,6 +115,7 @@ namespace GraficReadactorDevEdu
                         currentFigure.Move(delta);
                         currentFigure.SetPrevPoint(e.Location);
                         break;
+
 
                 }
                 currentFigure.Draw(grafics, pen);
@@ -146,6 +158,7 @@ namespace GraficReadactorDevEdu
             mainBm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 
             pen = new Pen(colorDialog1.Color, (int)numericUpDown3.Value);
+            brush2 = new SolidBrush(colorDialog1.Color);
 
             currentFigure?.SetPrevPoint(new Point(0, 0));
             MD = false;
@@ -252,6 +265,7 @@ namespace GraficReadactorDevEdu
             if (MyDialog.ShowDialog() == DialogResult.OK)
             {
                 pen.Color = MyDialog.Color;
+                brush2.Color = MyDialog.Color;
             }
 
         }
@@ -314,8 +328,13 @@ namespace GraficReadactorDevEdu
             }
         }
         private void button17_Click(object sender, EventArgs e) 
-        { 
+        {
+            mode = "";
+        }
 
+        private void button18_Click(object sender, EventArgs e)
+        {
+            mode = "Fill";
         }
     }
 }

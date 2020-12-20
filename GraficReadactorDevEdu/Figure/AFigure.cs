@@ -125,6 +125,11 @@ namespace GraficReadactorDevEdu.Figure
             }
 
         }
+
+        public void FillPolygon(Graphics graphics, Brush brush)
+        {
+            graphics.FillPolygon(brush, Points.ToArray());
+        }
     }
 
 
