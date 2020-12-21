@@ -173,7 +173,11 @@ namespace GraficReadactorDevEdu
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            name = "Прямоугольник";
             factory = new RectangleFigureFactory();
+            button19.Height = button1.Height;
+            button19.Top = button1.Top;
+            button1.BackColor = Color.FromArgb(62, 120, 138);
             currentFigure = factory.CreateFigure();
             quantity = 0;
             currentFigure.UpN(0);
@@ -196,6 +200,8 @@ namespace GraficReadactorDevEdu
         private void button2_Click(object sender, EventArgs e)
         {
             name = "Линия";
+            button19.Height = button2.Height;
+            button19.Top = button2.Top;
             factory = new LineFactory();
             quantity = 0;
             currentFigure.UpN(0);
@@ -206,6 +212,8 @@ namespace GraficReadactorDevEdu
         private void button3_Click(object sender, EventArgs e)
         {
             name = "Квадрат";
+            button19.Height = button3.Height;
+            button19.Top = button3.Top;
             factory = new SquareFactory();
             quantity = 0;
             currentFigure.UpN(0);
@@ -216,6 +224,8 @@ namespace GraficReadactorDevEdu
         private void button4_Click(object sender, EventArgs e)
         {
             name = "Круг";
+            button19.Height = button4.Height;
+            button19.Top = button4.Top;
             factory = new CircleFactory();
             quantity = 0;
             currentFigure.UpN(0);
@@ -226,6 +236,8 @@ namespace GraficReadactorDevEdu
         private void button8_Click(object sender, EventArgs e)
         {
             name = "Эллипс";
+            button19.Height = button8.Height;
+            button19.Top = button8.Top;
             factory = new EllipseFactory();
             quantity = 0;
             currentFigure.UpN(0);
@@ -236,6 +248,8 @@ namespace GraficReadactorDevEdu
         private void button6_Click(object sender, EventArgs e)
         {
             name = "Равнобедренный треугольник";
+            button19.Height = button6.Height;
+            button19.Top = button6.Top;
             factory = new TriangleFactory();
             quantity = 0;
             currentFigure.UpN(0);
@@ -246,6 +260,8 @@ namespace GraficReadactorDevEdu
         private void button7_Click(object sender, EventArgs e)
         {
             name = "Прямоугольный треугольник";
+            button19.Height = button7.Height;
+            button19.Top = button7.Top;
             factory = new PTriangleFactory();
             currentFigure.UpN(0);
             quantity = 0;
@@ -256,6 +272,8 @@ namespace GraficReadactorDevEdu
         private void button9_Click(object sender, EventArgs e)
         {
             name = "Кисть";
+            button19.Height = button9.Height;
+            button19.Top = button9.Top;
             factory = new PenFactory();
             quantity = 0;
             currentFigure.UpN(0);
@@ -266,7 +284,8 @@ namespace GraficReadactorDevEdu
         {
             name = "Ломанная линия";
             factory = new BrokenLinesFactory();
-
+            button19.Height = button5.Height;
+            button19.Top = button5.Top;
             currentFigure = factory.CreateFigure();
              quantity = (int)numericUpDown1.Value;
             currentFigure.UpN(quantity);
@@ -282,6 +301,8 @@ namespace GraficReadactorDevEdu
         private void button10_Click(object sender, EventArgs e)
         {
             name = "Треугольник по трем точкам";
+            button19.Height = button10.Height;
+            button19.Top = button10.Top;
 
             factory = new FreeTriangleFactory();
             currentFigure = factory.CreateFigure();
@@ -295,6 +316,8 @@ namespace GraficReadactorDevEdu
         {
             name = "Многоугольник";
             factory = new FreePolygonFactory();
+            button19.Height = button11.Height;
+            button19.Top = button11.Top;
             currentFigure = factory.CreateFigure();
             quantity2 = (int)numericUpDown1.Value;
            
@@ -398,6 +421,20 @@ namespace GraficReadactorDevEdu
           text = Convert.ToInt32(textBox1.Text);
         }
 
-        
+        private void button19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            button20.BackColor = Color.Red;
+            Application.Exit();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
