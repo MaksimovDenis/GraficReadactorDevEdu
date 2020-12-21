@@ -28,17 +28,17 @@ namespace GraficReadactorDevEdu.Figure
 
         public override void Update(Point startPoint, Point endPoint)
         {
-            if (N == 0)
+            if (NPolygon == 0)
             {
-                N = 3;
+                NPolygon = 3;
             }
 
             Points = new List<Point>();
             var r = Math.Sqrt(Math.Pow(endPoint.Y - startPoint.Y, 2) + Math.Pow(endPoint.X - startPoint.X, 2));
-            for (int i = 0; i < N; i++)
+            for (int i = 0; i < NPolygon; i++)
             {
-                Points.Add(new Point(Convert.ToInt32(startPoint.X + r * Math.Cos((2 * Math.PI * i) / N)),
-                                     Convert.ToInt32(startPoint.Y + r * Math.Sin((2 * Math.PI * i) / N))));
+                Points.Add(new Point(Convert.ToInt32(startPoint.X + r * Math.Cos((2 * Math.PI * i) / NPolygon)),
+                                     Convert.ToInt32(startPoint.Y + r * Math.Sin((2 * Math.PI * i) / NPolygon))));
 
             }
         }
@@ -50,7 +50,7 @@ namespace GraficReadactorDevEdu.Figure
 
         public override void UpN(int quantity)
         {
-            N = quantity;
+            
         }
 
         public override void FillPolygon(Graphics graphics, Brush brush)

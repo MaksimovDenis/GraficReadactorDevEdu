@@ -26,6 +26,7 @@ namespace GraficReadactorDevEdu
         string name = "";
         int quantity = 0;
         int quantity2 = 0;
+        int NPolygon;
         List<AFigure> Figures;
         string mode;
         int text;
@@ -44,6 +45,7 @@ namespace GraficReadactorDevEdu
                 case "Draw":
                
                     currentFigure.UpN(quantity);
+                    currentFigure.UpNPolygon(NPolygon);
                     currentFigure.UpdateBegin(e.Location);
                     currentFigure.MousDown();
                     currentFigure.color = pen.Color;
@@ -53,7 +55,7 @@ namespace GraficReadactorDevEdu
                     currentFigure = null;
                     foreach (AFigure figure in Figures)
                     {
-                        if (figure.IsItYou(e.Location))
+                        if (figure.FindFigure(e.Location))
                         {
                             currentFigure = figure;
                             Figures.Remove(currentFigure);
@@ -68,7 +70,7 @@ namespace GraficReadactorDevEdu
                 case "Fill":
                     foreach (AFigure figure in Figures)
                     {
-                        if (figure.IsItYou(e.Location))
+                        if (figure.FindFigure(e.Location))
                         {
                             currentFigure = figure;
                             Figures.Remove(currentFigure);
@@ -82,7 +84,7 @@ namespace GraficReadactorDevEdu
                     currentFigure = null;
                     foreach (AFigure figure in Figures)
                     {
-                        if (figure.IsItYou(e.Location))
+                        if (figure.FindFigure(e.Location))
                         {
                             currentFigure = figure;
                             Figures.Remove(currentFigure);
@@ -287,7 +289,6 @@ namespace GraficReadactorDevEdu
             button19.Height = button5.Height;
             button19.Top = button5.Top;
             currentFigure = factory.CreateFigure();
-             quantity = (int)numericUpDown1.Value;
             currentFigure.UpN(quantity);
             mode = "Draw";
 
@@ -367,20 +368,21 @@ namespace GraficReadactorDevEdu
             factory = new NRegularPolygonFactory();
             quantity = (int)numericUpDown1.Value;
             currentFigure.UpN(0);
+            currentFigure.UpNPolygon(NPolygon);
             currentFigure = factory.CreateFigure();
             mode = "Draw";
         }
 
         private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
         {
-            quantity = (int)numericUpDown1.Value;
+            NPolygon = (int)numericUpDown1.Value;
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null)
             {
-                SaveFileDialog sfd = new SaveFileDialog();
+                   SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Title = "Сохранить картинку как...";
                 sfd.OverwritePrompt = true;
                 sfd.CheckPathExists = true;

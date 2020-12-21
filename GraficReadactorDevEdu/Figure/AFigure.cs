@@ -15,11 +15,12 @@ namespace GraficReadactorDevEdu.Figure
         public Color color { get; set; }
         public int width { get; set; }
         protected IFactory factory;
-        public  int N=3;
+        public  int N;
         public Point prevPoint;
         public Point endPoint;
         public int tmp=0;
         public Point begin;
+        public int NPolygon = 3;
         public void SetEndPoint(Point point)
         {
             endPoint = point;
@@ -48,8 +49,7 @@ namespace GraficReadactorDevEdu.Figure
             }
         }
 
-        public abstract void DrawEndLine(Graphics grafics, Pen pen);
-
+        
         public void UpdateBegin(Point point)
         {
             if (tmp == 0)
@@ -67,9 +67,6 @@ namespace GraficReadactorDevEdu.Figure
 
             return endPoint;
         }
-        public abstract void Draw(Graphics graphics, Pen pen);
-        public abstract void Update(Point startPoint, Point endPoint);
-        public abstract void UpN(int quantity);
 
 
         public bool Check()
@@ -100,7 +97,7 @@ namespace GraficReadactorDevEdu.Figure
                 return true;
             else return false;
         }
-        public bool IsItYou(Point point)//Исправить название!
+        public bool FindFigure(Point point)
         {
             Point prevP = Points[Points.Count() - 1];
             if (Points == null)
@@ -138,9 +135,16 @@ namespace GraficReadactorDevEdu.Figure
             }
 
         }
-
+        public void UpNPolygon(int NPol)
+        {
+            NPolygon = NPol;
+        }
         public abstract void FillPolygon(Graphics graphics, Brush brush);
         public abstract void Veer(int text);
+        public abstract void Draw(Graphics graphics, Pen pen);
+        public abstract void Update(Point startPoint, Point endPoint);
+        public abstract void UpN(int quantity);
+        public abstract void DrawEndLine(Graphics grafics, Pen pen);
        
 }
 

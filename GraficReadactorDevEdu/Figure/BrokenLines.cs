@@ -15,7 +15,7 @@ namespace GraficReadactorDevEdu.Figure
             factory = factorys;
         }
 
-        public Point tmpPoint;
+       
         public override void Draw(Graphics graphics, Pen pen)
         {
 
