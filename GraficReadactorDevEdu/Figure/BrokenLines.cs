@@ -46,5 +46,10 @@ namespace GraficReadactorDevEdu.Figure
         public override void FillPolygon(Graphics graphics, Brush brush)
         {
         }
+
+        public override void Veer(int text)
+        {
+            
+        }
     }
 }

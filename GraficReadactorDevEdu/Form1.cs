@@ -19,7 +19,6 @@ namespace GraficReadactorDevEdu
         Bitmap tmpBm;
         Graphics grafics;
         Pen pen;
-        Pen penNoDraw;
         bool MD = false;
         IFactory factory;
         SolidBrush brush2;
@@ -29,6 +28,7 @@ namespace GraficReadactorDevEdu
         int quantity2 = 0;
         List<AFigure> Figures;
         string mode;
+        int text;
         public Form1()
         {
             InitializeComponent();
@@ -92,7 +92,10 @@ namespace GraficReadactorDevEdu
                             break;
                         }
                     }
+                
+                    currentFigure.Veer(text);
                     break;
+                   
 
             }
 
@@ -133,19 +136,10 @@ namespace GraficReadactorDevEdu
                             currentFigure.Move(delta);
                             currentFigure.SetPrevPoint(e.Location);
                             break;
-                        case "Veer":
-                            Point angle = new Point(0,0);
-                            int alpha = 5;
-                            angle.X =(int) (currentFigure.prevPoint.X * Math.Acos(alpha) - currentFigure.prevPoint.Y * Math.Asin(alpha));
-                            angle.Y = (int)(currentFigure.prevPoint.Y * Math.Acos(alpha) + currentFigure.prevPoint.X * Math.Asin(alpha));
-                                //float ang = (float)Math.Atan(angle.Y / angle.X);
-                            //grafics.RotateTransform(30F);
-                            currentFigure.Veer(grafics, angle);
+                        
 
 
-                            //}
-                            currentFigure.SetPrevPoint(e.Location);
-                            break;
+
 
 
                     }
@@ -398,5 +392,12 @@ namespace GraficReadactorDevEdu
         {
             mode = "Veer";
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+          text = Convert.ToInt32(textBox1.Text);
+        }
+
+        
     }
 }

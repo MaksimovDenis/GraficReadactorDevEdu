@@ -50,5 +50,10 @@ namespace GraficReadactorDevEdu.Figure
         {
             
         }
+
+        public override void Veer(int text)
+        {
+            
+        }
     }
 }

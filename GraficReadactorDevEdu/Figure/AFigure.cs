@@ -134,13 +134,13 @@ namespace GraficReadactorDevEdu.Figure
             for (int i = 0; i < Points.Count(); i++)
             {
                 Point p = Points[i];
-
                 Points[i] = new Point(point.X,  point.Y );
             }
 
         }
 
         public abstract void FillPolygon(Graphics graphics, Brush brush);
+        public abstract void Veer(int text);
        
 }
 
