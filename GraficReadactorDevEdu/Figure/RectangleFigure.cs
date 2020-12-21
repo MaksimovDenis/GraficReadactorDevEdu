@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-    class RectangleFigure : AFigure
+    public class RectangleFigure : AFigure
     {
 
         public RectangleFigure(IFactory factorys)

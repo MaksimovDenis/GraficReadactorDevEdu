@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GraficReadactorDevEdu.Figure
 {
-    class RTriangle : AFigure//Равнобедренный треугольник
+    public class RTriangle : AFigure//Равнобедренный треугольник
     {
       
 
